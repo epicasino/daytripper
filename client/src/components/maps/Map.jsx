@@ -18,10 +18,8 @@ export default function Map() {
   const [distance, setDistance] = useState('');
   const [duration, setDuration] = useState('');
 
-  /** @type React.MutableRefObject<HTMLInputElement> */
   const originRef = useRef();
 
-  /** @type React.MutableRefObject<HTMLInputElement> */
   const destinationRef = useRef();
 
   if (!isLoaded) {
@@ -34,11 +32,14 @@ export default function Map() {
       return;
     }
 
+    // eslint-disable-next-line no-undef
     const directionsService = new google.maps.DirectionsService();
 
     const results = await directionsService.route({
       origin: originRef.current.value,
       destination: destinationRef.current.value,
+      // waypoints: [{location: center}],
+      // eslint-disable-next-line no-undef
       travelMode: google.maps.TravelMode.DRIVING,
     });
 
@@ -68,8 +69,8 @@ export default function Map() {
         </Autocomplete>
         <button onClick={calculateRoute}>Submit</button>
       </form>
-      {distance !== '' ? (<p>{distance}</p>) : (<></>)}
-      {duration !== '' ? (<p>{duration}</p>) : (<></>)}
+      {distance !== '' ? <p>{distance}</p> : <></>}
+      {duration !== '' ? <p>{duration}</p> : <></>}
       <GoogleMap
         center={center}
         zoom={15}
