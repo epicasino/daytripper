@@ -3,20 +3,24 @@ import {
   GoogleMap,
   Autocomplete,
   DirectionsRenderer,
+  InfoWindow,
 } from '@react-google-maps/api';
 import { useState, useRef } from 'react';
 
 const center = { lat: 32.97, lng: -117.11 };
 
+const googleMapLibraries = ['places'];
+
 export default function Map() {
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
-    libraries: ['places'],
+    libraries: googleMapLibraries,
   });
 
   const [directionResponse, setDirectionResponse] = useState(null);
   const [distance, setDistance] = useState('');
   const [duration, setDuration] = useState('');
+  const [selectedLocation, setSelectedLocation] = useState(null);
 
   const originRef = useRef();
 
@@ -58,6 +62,27 @@ export default function Map() {
     },
   };
 
+  const onLoad = (infoWindow) => {
+    console.log('infoWindow: ', infoWindow);
+  };
+
+  const placeIdToCoords = async (e) => {
+    setSelectedLocation(null);
+    if (e.placeId) {
+      const geocoder = new google.maps.Geocoder();
+      const location = await geocoder
+        .geocode({ placeId: e.placeId })
+        .then((data) => {
+          return {
+            lat: data.results[0].geometry.location.lat(),
+            lng: data.results[0].geometry.location.lng(),
+          };
+        });
+      console.log(location);
+      setSelectedLocation(location);
+    }
+  };
+
   return (
     <div style={styles.maps}>
       <form onSubmit={calculateRoute}>
@@ -75,7 +100,18 @@ export default function Map() {
         center={center}
         zoom={15}
         mapContainerStyle={{ width: '100%', height: '100%' }}
+        onClick={placeIdToCoords}
       >
+        {selectedLocation ? (
+          <InfoWindow
+            onLoad={onLoad}
+            position={selectedLocation}
+          >
+            <h1>InfoWindow</h1>
+          </InfoWindow>
+        ) : (
+          <></>
+        )}
         {/* Display markers, directions, etc. */}
         {directionResponse && (
           <DirectionsRenderer directions={directionResponse} />
