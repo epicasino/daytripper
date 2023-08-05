@@ -18,20 +18,27 @@ export default function Testimonials() {
                             </div>
                         </div>
                         <div className="border-r border-green mx-3 lg:pl-20">
-                            <div className="py-10 pb-3 mt-32 relative bg-dirt hover:bg-sand cursor-pointer transition ease-out duration-300">
+                            <div className="py-10 pb-3 mt-32 relative bg-terracotta hover:bg-coral cursor-pointer transition ease-out duration-300">
                                 <div>
-                                    <div className="w-4 h-fit absolute right-0 -top-48 bg-dirt group-hover:bg-sand"></div>
+                                    <div className="w-4 h-fit absolute right-0 -top-48 bg-terracotta group-hover:bg-coral"></div>
                                     <img src="jeff2.jpeg" className="rounded-full" alt="happy man making cocktails" />                                
                                 </div>
                                 <div className="px-7 mt-20">
-                                    <h1 className="text-3xl font-bold hover:text-dirt transition ease-out duration-300">Jeff P.</h1>
+                                    <h1 className="text-3xl font-bold hover:text-terracotta transition ease-out duration-300">Jeff P.</h1>
                                     <h2 className="text-2xl mt-4 font-bold">Where am I?</h2>
                                     <p className="mt-2 opacity-60 group-hover:opacity-70">Was a question I often asked myself. Now I know the answer thanks to DAY TRIPPER</p>
                                 </div>
+                            </div>                        
+                        </div>
+                        <div className="border-r border-green mx-3 lg:pl-20">
+                            <div className="py-10 pb-3 mt-5 h-fit relative bg-dirt hover:bg-sand cursor-pointer transition ease-out duration-300">
+                                <div>
+                                    <div className="w-4 h-fit bg-dirt absolute right-o -bottom-44 group-hover bg"></div>
+                                    <img src="quinton.jpeg"  className="rounded-full" alt="man in suit smiling with arms crossed" />
+
+                                </div>
 
                             </div>
-                            
-
                         </div>
                     </div>
                 </div>
