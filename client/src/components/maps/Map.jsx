@@ -14,7 +14,9 @@ const googleMapLibraries = ['places'];
 export default function Map() {
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+    mapIds: 'ca50b27b41e91954',
     libraries: googleMapLibraries,
+    version: 'beta',
   });
 
   const [directionResponse, setDirectionResponse] = useState(null);
@@ -92,7 +94,12 @@ export default function Map() {
         <Autocomplete>
           <input placeholder="Destination" ref={destinationRef}></input>
         </Autocomplete>
-        <button onClick={calculateRoute} className='bg-green font-kawaii text-white px-4 py-1 m-1 rounded-full hover:bg-sage'>Submit</button>
+        <button
+          onClick={calculateRoute}
+          className="bg-green font-kawaii text-white px-4 py-1 m-1 rounded-full hover:bg-sage"
+        >
+          Submit
+        </button>
       </form>
       {distance !== '' ? <p>{distance}</p> : <></>}
       {duration !== '' ? <p>{duration}</p> : <></>}
@@ -103,10 +110,7 @@ export default function Map() {
         onClick={placeIdToCoords}
       >
         {selectedLocation ? (
-          <InfoWindow
-            onLoad={onLoad}
-            position={selectedLocation}
-          >
+          <InfoWindow onLoad={onLoad} position={selectedLocation}>
             <h1>InfoWindow</h1>
           </InfoWindow>
         ) : (
