@@ -3,6 +3,8 @@ import { Outlet } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Map from './components/maps/Map';
 import Navbar from './components/navbar/Navbar';
+import About from './components/about/About';
+
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -15,7 +17,8 @@ function App() {
       <div>
         <Outlet />
         <Navbar />
-        <Map />
+        <About />
+        <Map /> 
       </div>
     </ApolloProvider>
   );

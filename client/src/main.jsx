@@ -15,11 +15,3 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <RouterProvider router={router} />
 );
-
-const Modal = () => {
-  return (
-    <div className='fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm' id='signInBtn'>Modal</div>
-  )
-}
-
-export default Modal;
