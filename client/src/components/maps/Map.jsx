@@ -66,7 +66,7 @@ export default function Map() {
         <Autocomplete>
           <input placeholder="Destination" ref={destinationRef}></input>
         </Autocomplete>
-        <button onClick={calculateRoute}>Submit</button>
+        <button onClick={calculateRoute} className='bg-green font-kawaii text-white px-4 py-1 m-1 rounded-full hover:bg-sage'>Submit</button>
       </form>
       {distance !== '' ? (<p>{distance}</p>) : (<></>)}
       {duration !== '' ? (<p>{duration}</p>) : (<></>)}
