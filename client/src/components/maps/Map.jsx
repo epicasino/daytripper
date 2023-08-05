@@ -87,20 +87,20 @@ export default function Map() {
     <div style={styles.maps}>
       <form onSubmit={calculateRoute}>
         <Autocomplete>
-          <input placeholder="To" ref={originRef}></input>
+          <input placeholder="From" ref={originRef}></input>
         </Autocomplete>
         <Autocomplete>
           <input placeholder="Destination" ref={destinationRef}></input>
         </Autocomplete>
-        <button onClick={calculateRoute}>Submit</button>
+        <button onClick={calculateRoute} className='bg-green font-kawaii text-white px-4 py-1 m-1 rounded-full hover:bg-sage'>Submit</button>
       </form>
       {distance !== '' ? <p>{distance}</p> : <></>}
       {duration !== '' ? <p>{duration}</p> : <></>}
       <GoogleMap
         center={center}
         zoom={15}
-        mapContainerStyle={{ width: '100%', height: '100%' }}
         onClick={placeIdToCoords}
+        mapContainerStyle={{ width: '50%', height: '50%' }}
       >
         {selectedLocation ? (
           <InfoWindow
