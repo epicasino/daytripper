@@ -99,8 +99,8 @@ export default function Map() {
       <GoogleMap
         center={center}
         zoom={15}
-        onClick={placeIdToCoords}
         mapContainerStyle={{ width: '50%', height: '50%' }}
+        onClick={placeIdToCoords}
       >
         {selectedLocation ? (
           <InfoWindow
