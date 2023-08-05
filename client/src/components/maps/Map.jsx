@@ -61,7 +61,7 @@ export default function Map() {
     <div style={styles.maps}>
       <form onSubmit={calculateRoute}>
         <Autocomplete>
-          <input placeholder="To" ref={originRef}></input>
+          <input placeholder="From" ref={originRef}></input>
         </Autocomplete>
         <Autocomplete>
           <input placeholder="Destination" ref={destinationRef}></input>
@@ -73,7 +73,7 @@ export default function Map() {
       <GoogleMap
         center={center}
         zoom={15}
-        mapContainerStyle={{ width: '100%', height: '100%' }}
+        mapContainerStyle={{ width: '50%', height: '50%' }}
       >
         {/* Display markers, directions, etc. */}
         {directionResponse && (
