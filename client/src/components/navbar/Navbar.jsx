@@ -11,13 +11,13 @@ export default function Navbar() {
               <a className="hover:text-sage" href="#">About</a>
             </li>
             <li>
+              <a className="hover:text-sage" href="#">Testimonials</a>
+            </li>
+            <li>
               <a className="hover:text-sage" href="#">Trips</a>
             </li>
             <li>
               <a className="hover:text-sage" href="#">Contact</a>
-            </li>
-            <li>
-              <a className="hover:text-sage" href="#">Testimonials</a>
             </li>
           </ul>
         </div>
