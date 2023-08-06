@@ -3,15 +3,17 @@ import {
   GoogleMap,
   Autocomplete,
   DirectionsRenderer,
-  InfoWindow,
 } from '@react-google-maps/api';
 import { useState, useRef } from 'react';
+import MapInfoWindow from './MapInfoWindow';
 
+// Can remove later, used to center maps to coordinates when loaded
 const center = { lat: 32.97, lng: -117.11 };
 
 const googleMapLibraries = ['places'];
 
 export default function Map() {
+  // Loads the Google Map API w/ hook, renders when its fully loaded
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
     mapIds: 'ca50b27b41e91954',
@@ -19,19 +21,36 @@ export default function Map() {
     version: 'beta',
   });
 
+  const styles = {
+    maps: {
+      position: 'absolute',
+      screenLeft: 0,
+      screenTop: 0,
+      height: '100vh',
+      width: '100vw',
+    },
+  };
+
+  // useState for directions
   const [directionResponse, setDirectionResponse] = useState(null);
   const [distance, setDistance] = useState('');
   const [duration, setDuration] = useState('');
-  const [selectedLocation, setSelectedLocation] = useState(null);
 
+  // useRefs for direction box inputs
   const originRef = useRef();
-
   const destinationRef = useRef();
 
+  // useState for user's clicked coordinates and place details
+  const [selectedLocation, setSelectedLocation] = useState(null);
+  const [placeDetails, setPlaceDetails] = useState(null);
+
+  // Loading text if Google Maps API isn't loaded
   if (!isLoaded) {
     return <div> Loading... </div>;
   }
 
+
+  // Calculates routes when form is submitted
   async function calculateRoute(event) {
     event.preventDefault();
     if (originRef.current.value === '' || destinationRef.current.value === '') {
@@ -54,23 +73,12 @@ export default function Map() {
     setDuration(results.routes[0].legs[0].duration.text);
   }
 
-  const styles = {
-    maps: {
-      position: 'absolute',
-      screenLeft: 0,
-      screenTop: 0,
-      height: '100vh',
-      width: '100vw',
-    },
-  };
-
-  const onLoad = (infoWindow) => {
-    console.log('infoWindow: ', infoWindow);
-  };
-
+  // When user clicks on map, if they click on a marker, this will trigger and get coordinates from placeId, along with place details
   const placeIdToCoords = async (e) => {
     setSelectedLocation(null);
+    setPlaceDetails(null);
     if (e.placeId) {
+      // eslint-disable-next-line no-undef
       const geocoder = new google.maps.Geocoder();
       const location = await geocoder
         .geocode({ placeId: e.placeId })
@@ -82,6 +90,15 @@ export default function Map() {
         });
       console.log(location);
       setSelectedLocation(location);
+
+      const detailSearch = await fetch(
+        `http://localhost:3001/api/placeDetails/${e.placeId}`
+      )
+        .then((data) => data.json())
+        .then((json) => json.result);
+
+      console.log(detailSearch);
+      setPlaceDetails(detailSearch);
     }
   };
 
@@ -106,13 +123,13 @@ export default function Map() {
       <GoogleMap
         center={center}
         zoom={15}
-        mapContainerStyle={{ width: '50%', height: '50%' }}
+        mapContainerStyle={{ width: '75%', height: '75%' }}
+        mapContainerClassName="mapContainer"
         onClick={placeIdToCoords}
       >
         {selectedLocation ? (
-          <InfoWindow onLoad={onLoad} position={selectedLocation}>
-            <h1>InfoWindow</h1>
-          </InfoWindow>
+          // When there is a selectedLocation, an InfoWindow component loads, passing down props for location & place details
+          <MapInfoWindow props={{ selectedLocation, placeDetails }} />
         ) : (
           <></>
         )}
