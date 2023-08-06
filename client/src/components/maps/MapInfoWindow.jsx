@@ -23,9 +23,11 @@ export default function MapInfoWindow({ props }) {
               View in Google Maps
             </a>
           )}
+          {/* Button that will save location to trip data when clicked */}
           <button
             type="button"
             className="block text-base hover:text-green hover:underline"
+            onClick={props.saveWaypoint}
           >
             Save Location
           </button>

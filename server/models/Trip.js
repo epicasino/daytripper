@@ -11,9 +11,21 @@ const tripSchema = new Schema({
   },
   stops: [
     {
-      location: {
+      address: {
         type: String,
       },
+      lat: {
+        type: String,
+      },
+      lng: {
+        type: String,
+      },
+      name: {
+        type: String,
+      },
+      placeId: {
+        type: String,
+      }
     },
   ],
 });

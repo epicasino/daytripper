@@ -1,11 +1,11 @@
 import {
   useJsApiLoader,
   GoogleMap,
-  Autocomplete,
   DirectionsRenderer,
 } from '@react-google-maps/api';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import MapInfoWindow from './MapInfoWindow';
+import TripDataBox from '../trips/TripDataBox';
 
 // Can remove later, used to center maps to coordinates when loaded
 const center = { lat: 32.97, lng: -117.11 };
@@ -22,12 +22,22 @@ export default function Map() {
   });
 
   const styles = {
-    maps: {
+    mapsContainer: {
       position: 'absolute',
       screenLeft: 0,
       screenTop: 0,
       height: '100vh',
       width: '100vw',
+      display: 'flex',
+    },
+    maps: { width: '100%', height: '100%', zIndex: 0, position: 'absolute' },
+    tripDataBox: {
+      width: '25%',
+      height: '90%',
+      backgroundColor: 'grey',
+      margin: '1rem',
+      padding: '1rem',
+      zIndex: 1,
     },
   };
 
@@ -44,11 +54,45 @@ export default function Map() {
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [placeDetails, setPlaceDetails] = useState(null);
 
+  const [waypoints, setWaypoints] = useState([]);
+
+  // When user adds a waypoint, route is updated on maps
+  useEffect(() => {
+    // console.log(waypoints);
+    const waypointIds = waypoints.map((waypoint) => {
+      return { location: { placeId: waypoint.placeId } };
+    });
+    async function updateRoute() {
+      if (
+        originRef.current.value === '' ||
+        destinationRef.current.value === ''
+      ) {
+        return;
+      }
+
+      // eslint-disable-next-line no-undef
+      const directionsService = new google.maps.DirectionsService();
+
+      console.log(waypoints);
+      const results = await directionsService.route({
+        origin: originRef.current.value,
+        destination: destinationRef.current.value,
+        waypoints: waypointIds,
+        // eslint-disable-next-line no-undef
+        travelMode: google.maps.TravelMode.DRIVING,
+      });
+      setDirectionResponse(results);
+      console.log(results);
+      setDistance(results.routes[0].legs[0].distance.text);
+      setDuration(results.routes[0].legs[0].duration.text);
+    }
+    updateRoute();
+  }, [waypoints]);
+
   // Loading text if Google Maps API isn't loaded
   if (!isLoaded) {
     return <div> Loading... </div>;
   }
-
 
   // Calculates routes when form is submitted
   async function calculateRoute(event) {
@@ -60,15 +104,15 @@ export default function Map() {
     // eslint-disable-next-line no-undef
     const directionsService = new google.maps.DirectionsService();
 
+    console.log(waypoints);
     const results = await directionsService.route({
       origin: originRef.current.value,
       destination: destinationRef.current.value,
-      // waypoints: [{location: center}],
       // eslint-disable-next-line no-undef
       travelMode: google.maps.TravelMode.DRIVING,
     });
-
     setDirectionResponse(results);
+    console.log(results);
     setDistance(results.routes[0].legs[0].distance.text);
     setDuration(results.routes[0].legs[0].duration.text);
   }
@@ -97,39 +141,44 @@ export default function Map() {
         .then((data) => data.json())
         .then((json) => json.result);
 
-      console.log(detailSearch);
-      setPlaceDetails(detailSearch);
+      console.log({ ...detailSearch, placeId: e.placeId });
+      setPlaceDetails({ ...detailSearch, placeId: e.placeId });
     }
   };
 
+  const saveWaypoint = async () => {
+    setWaypoints((prevWaypoints) => {
+      return [...prevWaypoints, placeDetails];
+    });
+  };
+
   return (
-    <div style={styles.maps}>
-      <form onSubmit={calculateRoute}>
-        <Autocomplete>
-          <input placeholder="From" ref={originRef}></input>
-        </Autocomplete>
-        <Autocomplete>
-          <input placeholder="Destination" ref={destinationRef}></input>
-        </Autocomplete>
-        <button
-          onClick={calculateRoute}
-          className="bg-green font-kawaii text-white px-4 py-1 m-1 rounded-full hover:bg-sage"
-        >
-          Submit
-        </button>
-      </form>
-      {distance !== '' ? <p>{distance}</p> : <></>}
-      {duration !== '' ? <p>{duration}</p> : <></>}
+    <div style={styles.mapsContainer}>
+      <div className="tripDataBox" style={styles.tripDataBox}>
+        <TripDataBox
+          props={{
+            distance,
+            duration,
+            originRef,
+            destinationRef,
+            waypoints,
+            directionResponse,
+            calculateRoute,
+          }}
+        />
+      </div>
       <GoogleMap
         center={center}
         zoom={15}
-        mapContainerStyle={{ width: '75%', height: '75%' }}
+        mapContainerStyle={styles.maps}
         mapContainerClassName="mapContainer"
         onClick={placeIdToCoords}
       >
         {selectedLocation ? (
           // When there is a selectedLocation, an InfoWindow component loads, passing down props for location & place details
-          <MapInfoWindow props={{ selectedLocation, placeDetails }} />
+          <MapInfoWindow
+            props={{ selectedLocation, placeDetails, saveWaypoint }}
+          />
         ) : (
           <></>
         )}
