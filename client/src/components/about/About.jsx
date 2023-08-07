@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function About() {
   return (
     <hero>
@@ -23,17 +25,17 @@ export default function About() {
                 Testimonials
               </a>
             </button>
-            {/* Ray: added button to try out functionality of map showing */}
-            <button id="openAppBtn" className="mt-5">
-              {/* mt-5 in line put spacing under testimonial button, style differently if needed */}
-              <a
-                href="/map"
-                className="bg-gradient-to-r from-coral via-sage to-dirt text-white rounded-full py-2 px-4 border hover:border-transparent hover:text-terracotta id="
+            {/* Ray: added Link component in react-router-dom to try out functionality of map showing */}
+            {/* When button is clicked, it redirects to Map page */}
+            <Link to="/map">
+              <button
+                id="openAppBtn"
+                className="bg-gradient-to-r from-coral via-sage to-dirt text-white rounded-full py-2 px-4 border hover:border-transparent hover:text-terracotta id= mt-5" // mt-5 added for margins, amount & styling can be changed
               >
                 Open App
-              </a>
-            </button>
-            {/*  */}
+              </button>
+            </Link>
+            {/* ----------------------------------------------------- */}
           </div>
           <div className="p-8 mt-12 mb-6 md:mb-0 md:mt-0 ml-0 md:ml-12 lg:w-2/3 justify-center">
             <div className="h-48 flex flex-wrap content-center">
