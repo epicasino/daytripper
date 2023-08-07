@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Map from './components/maps/Map';
 <<<<<<< HEAD
-import Modal from "./components/login/Modal"
+import Modal from "./components/login/LoginModal"
 =======
 import Navbar from './components/navbar/Navbar';
 import About from './components/about/About';
