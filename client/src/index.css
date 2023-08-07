@@ -1,9 +1,11 @@
-:root {
-    --first-color: #E0B666; /*sand*/
-    --second-color: #9B7838; /*dirt*/
-    --third-color: #DA603E; /*coral*/   
-    --fourth-color: #B0442A; /*terracotta*/
-    --fifth-color: #2E4842; /*dark green*/
-    --sixth-color: #81A89B; /*sage*/
-    --text-color: #FFFFFF; /*white*/
+@import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@300&family=DotGothic16&family=Roboto:wght@300&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav-links > ul > li > a {
+  color: white;
+  text-decoration: none;
 }
+
+
