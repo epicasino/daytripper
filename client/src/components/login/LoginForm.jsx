@@ -1,8 +1,7 @@
-import { useState } from "react";
-import Auth from "../../utils/auth";
+import { useState } from 'react';
+import Auth from '../../utils/auth';
 
 const LoginForm = () => {
-
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -31,7 +30,7 @@ const LoginForm = () => {
         />
       </label>
       <br />
-      <input type="submit" value="Submit" />
+      <button type="submit">Login</button>
     </form>
   );
 };
