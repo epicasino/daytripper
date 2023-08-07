@@ -25,7 +25,7 @@ export default function TripDataBox({ props }) {
         {props.distance !== '' ? <p>Distance: {props.distance}</p> : <></>}
         {props.duration !== '' ? <p>Duration: {props.duration}</p> : <></>}
         {props.waypoints.map((waypoint) => (
-          <WaypointBox key={waypoint.placeId} props={waypoint}/>
+          <WaypointBox key={waypoint.placeId} props={waypoint} />
         ))}
       </div>
       {props.directionResponse && <button type="button">Save Trip</button>}

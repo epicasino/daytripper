@@ -4,8 +4,8 @@ import {
   DirectionsRenderer,
 } from '@react-google-maps/api';
 import { useState, useRef, useEffect } from 'react';
-import MapInfoWindow from './MapInfoWindow';
-import TripDataBox from '../trips/TripDataBox';
+import MapInfoWindow from '../components/maps/MapInfoWindow';
+import TripDataBox from '../components/trips/TripDataBox';
 
 // Can remove later, used to center maps to coordinates when loaded
 const center = { lat: 32.97, lng: -117.11 };
@@ -21,6 +21,7 @@ export default function Map() {
     version: 'beta',
   });
 
+  // Can Change
   const styles = {
     mapsContainer: {
       position: 'absolute',
