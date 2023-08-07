@@ -11,35 +11,37 @@ const LoginForm = () => {
   }
 
   return (
-    <section className='bg-green h-screen  '>
-      <header className="text-center font-kawaii text-white text-3xl bg-gradient-to-r from-terracotta via-dirt to-sage">Login Page</header>
-        <div className="font-kawaii bg-green">
-          <div className="card ">
-            
+    <section className='h-screen'>
+      <header className="text-center font-kawaii text-white text-3xl bg-gradient-to-r from-terracotta to-green">Login Page</header>
+      <div className="bg-cover bg-no-repeat object-cover max-w max-h bg-[url('https://i.imgur.com/RYdZHkL.png')] flex flex-col items-center justify-center h-full">
+        <div className="border-box rounded-lg h-2/5 w-2/4 p-4 border-4 bg-green bg-opacity-70">
+          <div className=" font-kawaii text-center m-6 text-2xl object-contain">
+              
 
-            <form onSubmit={handleSubmit}>
-              <label>
-                Username:
-                <input
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </label>
-              <br />
-              <label>
-                Password:
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </label>
-              <br />
-              <button type="submit" className="bg-gradient-to-r from-coral via-sage to-dirt text-white rounded-full py-2 px-4 border hover:border-transparent hover:text-terracotta mt-5 ">Login</button>
-            </form>
-          </div>
+              <form onSubmit={handleSubmit}>
+                <label className='text-white text-2xl'>
+                  Username:
+                  <input className='text-black rounded-sm ml-2'
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </label>
+                <br />
+                <label className='text-white text-2xl'>
+                  Password:
+                  <input className='text-black rounded-sm ml-3'
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </label>
+                <br />
+                <button type="submit" className="bg-coral text-white rounded-full py-2 px-4 border hover:border-transparent hover:text-terracotta mt-5 ">Login</button>
+              </form>
+            </div>
         </div>
+      </div>
     </section>
   );
 };
