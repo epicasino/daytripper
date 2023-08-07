@@ -29,7 +29,7 @@ function RegistrationForm() {
   };
 
   return (
-    <div className="form">
+    <form>
       <div className="form-body">
         <div className="username">
           <label className="form__label" htmlFor="userName">Username</label>
@@ -59,7 +59,7 @@ function RegistrationForm() {
       <div className="footer">
         <button onClick={() => handleSubmit()} type="submit" className="btn">Register</button>
       </div>
-    </div>
+    </form>
   );
 }
 
