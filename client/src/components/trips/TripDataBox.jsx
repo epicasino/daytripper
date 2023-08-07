@@ -1,15 +1,39 @@
-import React, { useState } from 'react';
-import { Autocomplete } from '@react-google-maps/api';
-import WaypointBox from './WaypointBox';
+import React, { useState } from "react";
+import Auth from "../../utils/auth";
+import { Autocomplete } from "@react-google-maps/api";
+import { useMutation } from "@apollo/client";
+import WaypointBox from "./WaypointBox";
+import { ADD_TRIP } from "../../utils/mutations";
 
 export default function TripDataBox({ props }) {
-  const [from, setFrom] = useState('');
-  const [destination, setDestination] = useState('');
+  const [from, setFrom] = useState("");
+  const [destination, setDestination] = useState("");
+
+  const [addTrip, { error }] = useMutation(ADD_TRIP);
 
   const trip = {
     startLocation: from,
     destinationLocation: destination,
     waypoints: props.waypoints,
+  };
+
+  const saveTrip = async () => {
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+    if (!token) {
+      return false;
+    }
+    try {
+      const { data } = await addTrip({
+        variables: {
+          start: trip.startLocation,
+          destination: trip.destinationLocation,
+          waypoints: trip.waypoints,
+        },
+      });
+      console.log(data);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   // console.log(trip)
@@ -41,13 +65,17 @@ export default function TripDataBox({ props }) {
       </form>
       <div className="tripDetails">
         <h1>Trip Details</h1>
-        {props.distance !== '' ? <p>Distance: {props.distance}</p> : <></>}
-        {props.duration !== '' ? <p>Duration: {props.duration}</p> : <></>}
+        {props.distance !== "" ? <p>Distance: {props.distance}</p> : <></>}
+        {props.duration !== "" ? <p>Duration: {props.duration}</p> : <></>}
         {props.waypoints.map((waypoint) => (
           <WaypointBox key={waypoint.placeId} props={waypoint} />
         ))}
       </div>
-      {props.directionResponse && <button type="button">Save Trip</button>}
+      {props.directionResponse && (
+        <button type="button" onClick={saveTrip}>
+          Save Trip
+        </button>
+      )}
     </>
   );
 }
