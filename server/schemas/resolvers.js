@@ -3,6 +3,17 @@ const { AuthenticationError, signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
+    me: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ _id: context.user._id }).select(
+          '-__v -password'
+        );
+
+        return userData;
+      }
+
+      throw AuthenticationError;
+    },
     users: async () => {
       return await User.find({});
     },
@@ -34,6 +45,42 @@ const resolvers = {
       if (user) {
         return user;
       }
+    },
+    addTrip: async (parent, { start, destination, waypoints }, context) => {
+      if (context.user) {
+        const addedTrip = await User.findOneAndUpdate(
+          {
+            _id: context.user._id,
+          },
+          {
+            $addToSet: {
+              trips: {
+                startLocation: start,
+                destinationLocation: destination,
+                waypoints: waypoints,
+              },
+            },
+          },
+          { new: true }
+        );
+
+        return addedTrip;
+      }
+
+      throw AuthenticationError;
+    },
+    removeTrip: async (parent, { tripId }, context) => {
+      if (context.user) {
+        const removedTrip = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { trip: { tripId } } },
+          { new: true }
+        );
+
+        return removedTrip;
+      }
+
+      throw AuthenticationError;
     },
   },
 };

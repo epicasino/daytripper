@@ -9,7 +9,7 @@ const tripSchema = new Schema({
     type: String,
     required: true,
   },
-  stops: [
+  waypoints: [
     {
       address: {
         type: String,
