@@ -1,7 +1,7 @@
 import './App.css';
 import { Outlet } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import Map from './components/maps/Map';
+// import Map from './components/maps/Map';
 import Navbar from './components/navbar/Navbar';
 import About from './components/about/About';
 import Testimonials from './components/testimonials/Testimonials';
@@ -20,7 +20,7 @@ function App() {
         <Navbar />
         <About />
         <Testimonials />
-        <Map /> 
+        {/* <Map />  */}
 
       </div>
     </ApolloProvider>
