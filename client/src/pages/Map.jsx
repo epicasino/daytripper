@@ -92,7 +92,7 @@ export default function Map() {
 
   // Loading text if Google Maps API isn't loaded
   if (!isLoaded) {
-    return <div> Loading... </div>;
+    return <div className="w-screen h-screen animate-pulse text-5xl flex items-center justify-center"> Loading Map... </div>;
   }
 
   // Calculates routes when form is submitted

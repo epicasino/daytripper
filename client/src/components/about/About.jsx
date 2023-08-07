@@ -24,11 +24,14 @@ export default function About() {
               </a>
             </button>
             {/* Ray: added button to try out functionality of map showing */}
-            <button
-              id="openAppBtn"
-              className="bg-gradient-to-r from-coral via-sage to-dirt text-white rounded-full py-2 px-4 border hover:border-transparent hover:text-terracotta id= mt-5" //mt-5 in line put spacing under testimonial button, style differently if needed
-            >
-              Open App
+            <button id="openAppBtn" className="mt-5">
+              {/* mt-5 in line put spacing under testimonial button, style differently if needed */}
+              <a
+                href="/map"
+                className="bg-gradient-to-r from-coral via-sage to-dirt text-white rounded-full py-2 px-4 border hover:border-transparent hover:text-terracotta id="
+              >
+                Open App
+              </a>
             </button>
             {/*  */}
           </div>
