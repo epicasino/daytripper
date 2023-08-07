@@ -17,6 +17,13 @@ const resolvers = {
     users: async () => {
       return await User.find({});
     },
+    getTrip: async (parent, { tripId }, context) => {
+      if (context.user) {
+        const tripData = await User.findOne({ _id: context.user._id }).select({
+          trips: { _id: tripId },
+        });
+      }
+    },
   },
   Mutation: {
     login: async (parent, { username, password }) => {

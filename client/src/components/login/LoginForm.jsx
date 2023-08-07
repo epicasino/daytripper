@@ -1,14 +1,32 @@
 import { useState } from 'react';
 import Auth from '../../utils/auth';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../../utils/mutations';
 
-const LoginForm = () => {
+export default function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  function handleSubmit(event) {
+  const [login, { error }] = useMutation(LOGIN_USER);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // onLogin({ username, password });
-  }
+
+    try {
+      const { data } = await login({
+        variables: { username: username, password: password },
+      });
+
+      console.log(data);
+      Auth.login(data.login.token);
+    } catch (error) {
+      console.error(error);
+    }
+
+    setUsername('');
+    setPassword('');
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -33,6 +51,4 @@ const LoginForm = () => {
       <button type="submit">Login</button>
     </form>
   );
-};
-
-export default LoginForm;
+}

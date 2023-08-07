@@ -33,6 +33,7 @@ const typeDefs = `
   type Query {
     users: [User]
     me: User
+    getTrip(tripId: String!): Trip
   }
   type Mutation {
     login(username: String!, password: String!): Auth
