@@ -10,6 +10,7 @@ export default {
       'spin-slow': 'spin 3s linear infinite',
       'pulse': 'pulse 3s linear infinite'
     },
+    
 
     fontFamily: {
       kawaii: ['Averia Serif Libre', 'serif'],

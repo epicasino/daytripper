@@ -8,4 +8,13 @@
   text-decoration: none;
 }
 
-
+@layer components {
+  .card {
+    background-color: theme('colors.sage');
+    border-radius: theme('borderRadius.lg');
+    padding: theme('spacing.6');
+    margin-top: 10%;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+}

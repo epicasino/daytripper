@@ -20,7 +20,7 @@ export default function About() {
             <button id="testimonialBtn">
               <a
                 href="#"
-                className="bg-gradient-to-r from-coral via-sage to-dirt text-white rounded-full py-2 px-4 border hover:border-transparent hover:text-terracotta id="
+                className="bg-gradient-to-r from-coral via-sage to-dirt text-white rounded-full py-2 px-4 border hover:border-transparent hover:text-terracotta"
               >
                 Testimonials
               </a>
@@ -30,7 +30,7 @@ export default function About() {
             <Link to="/map">
               <button
                 id="openAppBtn"
-                className="bg-gradient-to-r from-coral via-sage to-dirt text-white rounded-full py-2 px-4 border hover:border-transparent hover:text-terracotta id= mt-5" // mt-5 added for margins, amount & styling can be changed
+                className="bg-gradient-to-r from-coral via-sage to-dirt text-white rounded-full py-2 px-4 border hover:border-transparent hover:text-terracotta mt-5" // mt-5 added for margins, amount & styling can be changed
               >
                 Open App
               </button>
