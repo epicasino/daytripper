@@ -2,6 +2,7 @@ import './App.css';
 import { Outlet } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Map from './components/maps/Map';
+import Modal from "./components/login/Modal"
 
 const client = new ApolloClient({
   uri: '/graphql',
