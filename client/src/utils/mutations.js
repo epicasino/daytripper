@@ -37,7 +37,7 @@ export const ADD_TRIP = gql`
       destinationLocation
       startLocation
       waypoints {
-        address
+        formatted_address
         lat
         lng
         name

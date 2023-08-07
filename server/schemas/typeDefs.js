@@ -13,14 +13,14 @@ const typeDefs = `
     waypoints: [Waypoint]
   }
   type Waypoint {
-    address: String
+    formatted_address: String
     lat: String
     lng: String
     name: String
     placeId: String
   }
   input WaypointInput {
-    address: String!
+    formatted_address: String!
     lat: String!
     lng: String!
     name: String!

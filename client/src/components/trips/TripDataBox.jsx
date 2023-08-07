@@ -1,17 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Autocomplete } from '@react-google-maps/api';
 import WaypointBox from './WaypointBox';
 
 export default function TripDataBox({ props }) {
+  const [from, setFrom] = useState('');
+  const [destination, setDestination] = useState('');
+
+  const trip = {
+    startLocation: from,
+    destinationLocation: destination,
+    waypoints: props.waypoints,
+  };
+
+  // console.log(trip)
+
   return (
     <>
       <h1>Your Trip</h1>
       <form onSubmit={props.calculateRoute} className="tripForm">
         <Autocomplete>
-          <input placeholder="From" ref={props.originRef}></input>
+          <input
+            placeholder="From"
+            ref={props.originRef}
+            onChange={(e) => setFrom(e.target.value)}
+          ></input>
         </Autocomplete>
         <Autocomplete>
-          <input placeholder="Destination" ref={props.destinationRef}></input>
+          <input
+            placeholder="Destination"
+            ref={props.destinationRef}
+            onChange={(e) => setDestination(e.target.value)}
+          ></input>
         </Autocomplete>
         <button
           onClick={props.calculateRoute}

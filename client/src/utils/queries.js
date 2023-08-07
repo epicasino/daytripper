@@ -11,7 +11,7 @@ export const QUERY_ME = gql`
         destinationLocation
         startLocation
         waypoints {
-          address
+          formatted_address
           lat
           lng
           name
@@ -29,7 +29,7 @@ export const GET_TRIP = gql`
       destinationLocation
       startLocation
       waypoints {
-        address
+        formatted_address
         lat
         lng
         name
