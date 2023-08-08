@@ -1,8 +1,8 @@
-import React from 'react';
 import Navbar from '../components/navbar/Navbar';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 // import { REMOVE_TRIP } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 export default function Trips() {
   const { loading, data } = useQuery(QUERY_ME, { fetchPolicy: 'network-only' });
@@ -11,6 +11,21 @@ export default function Trips() {
   const userData = data?.me || {};
 
   // console.log(userData);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  // Checks to see if user is logged in , if not, returns with this
+  if (!Auth.loggedIn()) {
+    return (
+      <div>
+        <Navbar />
+        <h1>Well, this is awkward...</h1>
+        <h1>You need to be logged in to see your saved trips!</h1>
+      </div>
+    );
+  }
 
   return (
     <div>

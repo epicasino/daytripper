@@ -3,14 +3,16 @@ import { Autocomplete } from '@react-google-maps/api';
 import { useMutation } from '@apollo/client';
 import WaypointBox from './WaypointBox';
 import { ADD_TRIP } from '../../utils/mutations';
+import { useEffect } from 'react';
 
 export default function TripDataBox({ props }) {
   const [addTrip, { error }] = useMutation(ADD_TRIP);
 
-  const saveTrip = async () => {
+  const saveTrip = async (e) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     if (!token) {
-      return false;
+      // If user isn't logged in, 'save trip' button's text is replace with this
+      e.target.innerHTML = 'You need to be logged in!';
     }
 
     const formattedWaypoints = props.waypoints.map((waypoint) => {

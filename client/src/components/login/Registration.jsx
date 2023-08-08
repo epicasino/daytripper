@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ADD_USER } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 import Auth from '../../utils/auth';
@@ -9,7 +9,23 @@ export default function RegistrationForm() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
+  const [regError, setRegError] = useState(false);
+
   const [register, { error }] = useMutation(ADD_USER);
+
+  useEffect(() => {
+    if (error) {
+      setRegError(true);
+    } else {
+      setRegError(false);
+    }
+  }, [error]);
+
+  const closeError = () => {
+    if (regError) {
+      setRegError(false);
+    }
+  }
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -43,6 +59,7 @@ export default function RegistrationForm() {
       throw 'Password Does Not Match!';
     } catch (error) {
       console.error(error);
+      setRegError(true);
     }
 
     setUserName('');
@@ -58,7 +75,21 @@ export default function RegistrationForm() {
       </header>
       <div className="bg-cover bg-no-repeat object-cover max-w max-h bg-[url('https://i.imgur.com/MJR2Bcc.png')] flex flex-col items-center justify-center h-full">
         <div className="border-box rounded-lg h-2/5 w-2/4 p-4 border-4 bg-green bg-opacity-70">
-          <form className="font-kawaii text-center m-6 text-2xl object-contain" onSubmit={handleSubmit}>
+          {/* Ray: Box that appears if user has wrong user/pass for registering */}
+          {regError && (
+            <div className="errorBox">
+              <button
+                className="text-xl px-1 text-center w-full"
+                onClick={closeError}
+              >
+                Something went wrong with registering! Check your email and confirm your password.
+              </button>
+            </div>
+          )}
+          <form
+            className="font-kawaii text-center m-6 text-2xl object-contain"
+            onSubmit={handleSubmit}
+          >
             <label className="form__label text-white" htmlFor="userName">
               Username
             </label>
