@@ -19,23 +19,25 @@ export default function Trips() {
   // Checks to see if user is logged in , if not, returns with this
   if (!Auth.loggedIn()) {
     return (
-      <div>
+      <div className='bg-sage h-screen font-kawaii text-white text-center align-middle object-contain'>
         <Navbar />
-        <h1>Well, this is awkward...</h1>
+        <h1 className='m-2 p-xl'>Well, this is awkward...</h1>
         <h1>You need to be logged in to see your saved trips!</h1>
       </div>
     );
   }
 
   return (
-    <div>
+    <div className='bg-gradient-to-r from-terracotta via-sand to-sage h-screen'>
       <Navbar />
-      <header className="text-center font-kawaii text-white text-3xl p-1 bg-terracotta">My Saved Trips</header>
-      <h1 className='font-kawaii'>Hello, {userData.username}!</h1>
-      <div className="tripsContainer">
+      <header className="text-center font-kawaii text-white text-3xl p-1 bg-terracotta border-b-2 border-green ">My Saved Trips</header>
+      <h1 className='font-kawaii text-white m-4'>Hello, {userData.username}!</h1>
+        <p className='font-kawaii text-white m-4'>A look at your saved trips:</p>
+      <div className="tripsContainer border-box rounded-lg h-fit w-fit p-4 border-4 bg-green font-kawaii text-white border-sage m-2 flex flex-col items-center justify-center ">
+        <h2>Trips</h2>
         {userData.trips?.map((trip) => {
           return (
-            <div key={trip._id}>
+            <div key={trip._id} className='border-box rounded-lg h-fit w-fit p-4 border-4 bg-dirt font-kawaii text-white border-sand m-2'>
               <h5>From: {trip.startLocation}</h5>
               <h5>To: {trip.destinationLocation}</h5>
               <h5>Waypoints: </h5>
