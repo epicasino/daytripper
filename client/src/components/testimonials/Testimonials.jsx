@@ -63,10 +63,9 @@ export default function Testimonials() {
                   <h1 className="text-3xl front-bold hover:text-dirt transition ease-out duration-300">
                     Quinton F.
                   </h1>
-                  <h2 className="text-2xl mt-4 font-bold">Placeholder</h2>
+                  <h2 className="text-2xl mt-4 font-bold">Vitamin D</h2>
                   <p className="mt-2 opacity-60 group-hover:opacity-70">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Vero, hic?
+                    Ever since Diablo4 came out, I forgot what the sun looked like. Now with DAY TRIPPER, I can touch grass again!!
                   </p>
                 </div>
               </div>
