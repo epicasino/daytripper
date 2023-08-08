@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
+import { Link } from 'react-router-dom';
 
 export default function LoginForm() {
   const [username, setUsername] = useState('');
@@ -64,6 +65,14 @@ export default function LoginForm() {
                 Login
               </button>
             </form>
+            <Link to="/register">
+              <button
+                type="submit"
+                className="bg-coral text-white rounded-full py-2 px-4 border hover:border-transparent hover:text-terracotta mt-5 "
+              >
+                Register
+              </button>
+            </Link>
           </div>
         </div>
       </div>

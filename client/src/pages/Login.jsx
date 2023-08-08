@@ -1,6 +1,6 @@
-import React from 'react'
-import Navbar from '../components/navbar/Navbar'
-import LoginForm from '../components/login/LoginForm'
+import React from 'react';
+import Navbar from '../components/navbar/Navbar';
+import LoginForm from '../components/login/LoginForm';
 
 export default function Login() {
   return (
@@ -8,5 +8,5 @@ export default function Login() {
       <Navbar />
       <LoginForm />
     </div>
-  )
+  );
 }
