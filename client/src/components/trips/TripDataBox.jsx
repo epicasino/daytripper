@@ -5,7 +5,8 @@ import WaypointBox from './WaypointBox';
 export default function TripDataBox({ props }) {
   return (
     <>
-      <h1>Your Trip</h1>
+    <div className="bg-terracotta">
+      <h1 className='text-white'>Your Trip</h1>
       <form onSubmit={props.calculateRoute} className="tripForm">
         <Autocomplete>
           <input placeholder="From" ref={props.originRef}></input>
@@ -21,14 +22,17 @@ export default function TripDataBox({ props }) {
         </button>
       </form>
       <div className="tripDetails">
-        <h1>Trip Details</h1>
+        <h1 className='text-white'>Trip Details</h1>
         {props.distance !== '' ? <p>Distance: {props.distance}</p> : <></>}
         {props.duration !== '' ? <p>Duration: {props.duration}</p> : <></>}
         {props.waypoints.map((waypoint) => (
           <WaypointBox key={waypoint.placeId} props={waypoint} />
         ))}
       </div>
-      {props.directionResponse && <button type="button">Save Trip</button>}
+      {props.directionResponse && <button 
+      className='bg-green font-kawaii text-white px-4 py-1 m-1 rounded-full hover:bg-sage'
+      type="button">Save Trip</button>}
+    </div>
     </>
   );
 }

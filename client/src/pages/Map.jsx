@@ -30,18 +30,27 @@ export default function Map() {
       position: 'absolute',
       screenLeft: 0,
       screenTop: 0,
-      height: '100vh',
-      width: '100vw',
+      height: '90vh',
+      width: '90vw',
       display: 'flex',
     },
-    maps: { width: '100%', height: '100%', zIndex: 0, position: 'absolute' },
+    maps: { 
+      width: '100%', 
+      height: '100%', 
+      zIndex: 0, 
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     tripDataBox: {
-      width: '25%',
-      height: '90%',
-      backgroundColor: 'grey',
+      width: '20%',
+      height: '75%',
+      backgroundColor: '#B0442A',
       margin: '1rem',
       padding: '1rem',
       zIndex: 1,
+      borderRadius: '1rem',
+      marginTop: '5rem',
     },
   };
 
@@ -158,42 +167,46 @@ export default function Map() {
 
   return (
     <div>
+      {/* NavBar component added */}
       <Navbar />
-      <div style={styles.mapsContainer}>
-        <div className="tripDataBox" style={styles.tripDataBox}>
-          <TripDataBox
-            props={{
-              distance,
-              duration,
-              originRef,
-              destinationRef,
-              waypoints,
-              directionResponse,
-              calculateRoute,
-            }}
-          />
-        </div>
-        <GoogleMap
-          center={center}
-          zoom={15}
-          mapContainerStyle={styles.maps}
-          mapContainerClassName="mapContainer"
-          onClick={placeIdToCoords}
-        >
-          {selectedLocation ? (
-            // When there is a selectedLocation, an InfoWindow component loads, passing down props for location & place details
-            <MapInfoWindow
-              props={{ selectedLocation, placeDetails, saveWaypoint }}
-            />
-          ) : (
-            <></>
-          )}
-          {/* Display markers, directions, etc. */}
-          {directionResponse && (
-            <DirectionsRenderer directions={directionResponse} />
-          )}
-        </GoogleMap>
-      </div>
+      <section className="h-screen bg-gradient-to-r from-sand via-sage to-sand">
+        <header className="text-center font-kawaii text-white text-3xl bg-gradient-to-r from-terracotta via-coral to-terracotta">Plan Your Trip</header>
+            <div style={styles.mapsContainer}>
+              <div className="tripDataBox font-kawaii" style={styles.tripDataBox}>
+                <TripDataBox
+                  props={{
+                    distance,
+                    duration,
+                    originRef,
+                    destinationRef,
+                    waypoints,
+                    directionResponse,
+                    calculateRoute,
+                  }}
+                />
+              </div>
+              <GoogleMap
+                center={center}
+                zoom={15}
+                mapContainerStyle={styles.maps}
+                mapContainerClassName="mapContainer border-2 border-green rounded-lg m-1"
+                onClick={placeIdToCoords}
+              >
+                {selectedLocation ? (
+                  // When there is a selectedLocation, an InfoWindow component loads, passing down props for location & place details
+                  <MapInfoWindow
+                    props={{ selectedLocation, placeDetails, saveWaypoint }}
+                  />
+                ) : (
+                  <></>
+                )}
+                {/* Display markers, directions, etc. */}
+                {directionResponse && (
+                  <DirectionsRenderer directions={directionResponse} />
+                )}
+              </GoogleMap>
+            </div>
+      </section>
     </div>
   );
 }
