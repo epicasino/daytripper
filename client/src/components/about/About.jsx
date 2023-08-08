@@ -17,14 +17,14 @@ export default function About() {
               We're here to help. Continue below to start planning your trip!
               Skeptical? Check out these testimonials!
             </p>
-            <button id="testimonialBtn">
+            {/* <button id="testimonialBtn">
               <a
                 href="#"
                 className="bg-gradient-to-r from-coral via-sage to-dirt text-white rounded-full py-2 px-4 border hover:border-transparent hover:text-terracotta"
               >
                 Testimonials
               </a>
-            </button>
+            </button> */}
             {/* Ray: added Link component in react-router-dom to try out functionality of map showing */}
             {/* When button is clicked, it redirects to Map page */}
             <Link to="/map">
