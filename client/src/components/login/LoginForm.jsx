@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
+import { Link } from 'react-router-dom';
 
 export default function LoginForm() {
   const [username, setUsername] = useState('');
@@ -31,8 +32,7 @@ export default function LoginForm() {
   return (
     <section className="h-screen">
       <header className="text-center font-kawaii text-white text-3xl bg-gradient-to-r from-terracotta to-green">
-        Login Page
-      </header>
+        Login Page</header>
       <div className="bg-cover bg-no-repeat object-cover max-w max-h bg-[url('https://i.imgur.com/RYdZHkL.png')] flex flex-col items-center justify-center h-full">
         <div className="border-box rounded-lg h-2/5 w-2/4 p-4 border-4 bg-green bg-opacity-70">
           <div className=" font-kawaii text-center m-6 text-2xl object-contain">
@@ -64,6 +64,14 @@ export default function LoginForm() {
                 Login
               </button>
             </form>
+            <Link to="/register">
+              <button
+                type="submit"
+                className="bg-coral text-white rounded-full py-2 px-4 border hover:border-transparent hover:text-terracotta mt-5 "
+              >
+                Register
+              </button>
+            </Link>
           </div>
         </div>
       </div>
