@@ -1,5 +1,3 @@
-// import { InfoWindow } from '@react-google-maps/api';
-
 export default function MapInfoWindow({ props }) {
   return (
     <div className="absolute bottom-2 p-5 bg-sand rounded-lg"

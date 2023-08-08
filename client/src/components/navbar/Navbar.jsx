@@ -16,9 +16,9 @@ export default function Navbar() {
         <div className="nav-links duration-500 md:static absolute bg-green text-white text-center font-kawaii md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto w-full items-end px-5">
           <ul className="flex md:flex-row flex-col md:items-end md:gap-[4vw] gap-4 py-1 my-2">
             <li>
-              <a className="hover:text-sage" href="#">
+              <Link to="/trips" className="hover:text-sage">
                 Trips
-              </a>
+              </Link>
             </li>
             <li>
               <a className="hover:text-sage" href="#">
