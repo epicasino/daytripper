@@ -46,9 +46,14 @@ export default function LoginForm() {
 
   return (
     <section className="h-screen">
+<<<<<<< Updated upstream
       <header className="text-center font-kawaii text-white text-3xl bg-gradient-to-r from-terracotta to-green">
         Login Page
       </header>
+=======
+      <header className="text-center font-kawaii text-white text-3xl p-1 bg-gradient-to-r from-terracotta to-green">
+        Login Page</header>
+>>>>>>> Stashed changes
       <div className="bg-cover bg-no-repeat object-cover max-w max-h bg-[url('https://i.imgur.com/RYdZHkL.png')] flex flex-col items-center justify-center h-full">
         <div className="border-box rounded-lg h-2/5 w-2/4 p-4 border-4 bg-green bg-opacity-70">
           {/* Ray: Box that appears if user has wrong user/pass */}
