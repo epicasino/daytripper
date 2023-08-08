@@ -9,9 +9,9 @@ const tripSchema = new Schema({
     type: String,
     required: true,
   },
-  stops: [
+  waypoints: [
     {
-      address: {
+      formatted_address: {
         type: String,
       },
       lat: {

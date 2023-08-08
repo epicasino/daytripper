@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Auth from '../../utils/auth';
 import { Autocomplete } from '@react-google-maps/api';
+import { useMutation } from '@apollo/client';
 import WaypointBox from './WaypointBox';
+import { ADD_TRIP } from '../../utils/mutations';
 
 export default function TripDataBox({ props }) {
   return (
@@ -29,9 +32,13 @@ export default function TripDataBox({ props }) {
           <WaypointBox key={waypoint.placeId} props={waypoint} />
         ))}
       </div>
-      {props.directionResponse && <button 
+      {props.directionResponse && (
+        <button 
       className='bg-green font-kawaii text-white px-4 py-1 m-1 rounded-full hover:bg-sage'
-      type="button">Save Trip</button>}
+      type="button" onClick={saveTrip}>
+          Save Trip
+        </button>
+      )}
     </div>
     </>
   );
