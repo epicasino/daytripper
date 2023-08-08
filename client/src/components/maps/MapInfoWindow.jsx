@@ -2,8 +2,7 @@
 
 export default function MapInfoWindow({ props }) {
   return (
-    <div className="absolute bottom-2 p-5 bg-sand rounded-lg"
-    >
+    <div className="absolute bottom-2 p-5 object-none border-2 border-green bg-dirt bg-opacity-90 rounded-lg font-kawaii text-white">
       {props.placeDetails ? (
         <>
           {/* InfoWindow proving to be buggy, debug if have spare time, if not then its ok */}
@@ -15,14 +14,14 @@ export default function MapInfoWindow({ props }) {
               target="_blank"
               rel="noreferrer"
             >
-              <p>Website</p>
+              <p className="text-white">Website</p>
             </a>
           ) : (
             <p className="text-sm">Website: N/A</p>
           )}
           {props.placeDetails.url && (
             <a href={props.placeDetails.url} target="_blank" rel="noreferrer">
-              View in Google Maps
+              <p className="text-white">View in Google Maps</p>
             </a>
           )}
           {/* Button that will save location to trip data when clicked */}
