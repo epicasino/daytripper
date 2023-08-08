@@ -54,6 +54,7 @@ const resolvers = {
       }
     },
     addTrip: async (parent, { start, destination, waypoints }, context) => {
+      // console.log(context.user);
       if (context.user) {
         const addedTrip = await User.findOneAndUpdate(
           {

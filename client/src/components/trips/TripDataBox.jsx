@@ -1,28 +1,38 @@
-import React, { useState } from "react";
-import Auth from "../../utils/auth";
-import { Autocomplete } from "@react-google-maps/api";
-import { useMutation } from "@apollo/client";
-import WaypointBox from "./WaypointBox";
-import { ADD_TRIP } from "../../utils/mutations";
+import React, { useState } from 'react';
+import Auth from '../../utils/auth';
+import { Autocomplete } from '@react-google-maps/api';
+import { useMutation } from '@apollo/client';
+import WaypointBox from './WaypointBox';
+import { ADD_TRIP } from '../../utils/mutations';
 
 export default function TripDataBox({ props }) {
-  const [from, setFrom] = useState("");
-  const [destination, setDestination] = useState("");
-
   const [addTrip, { error }] = useMutation(ADD_TRIP);
-
-  const trip = {
-    startLocation: from,
-    destinationLocation: destination,
-    waypoints: props.waypoints,
-  };
 
   const saveTrip = async () => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     if (!token) {
       return false;
     }
+
+    const formattedWaypoints = props.waypoints.map((waypoint) => {
+      return {
+        formatted_address: waypoint.formatted_address,
+        lat: waypoint.geometry.location.lat,
+        lng: waypoint.geometry.location.lng,
+        name: waypoint.name,
+        placeId: waypoint.placeId,
+      };
+    });
+    console.log(formattedWaypoints);
+
+    const trip = {
+      startLocation: props.originRef.current.value,
+      destinationLocation: props.destinationRef.current.value,
+      waypoints: formattedWaypoints,
+    };
+    
     try {
+      // console.log(trip.waypoints);
       const { data } = await addTrip({
         variables: {
           start: trip.startLocation,
@@ -43,18 +53,10 @@ export default function TripDataBox({ props }) {
       <h1>Your Trip</h1>
       <form onSubmit={props.calculateRoute} className="tripForm">
         <Autocomplete>
-          <input
-            placeholder="From"
-            ref={props.originRef}
-            onChange={(e) => setFrom(e.target.value)}
-          ></input>
+          <input placeholder="From" ref={props.originRef}></input>
         </Autocomplete>
         <Autocomplete>
-          <input
-            placeholder="Destination"
-            ref={props.destinationRef}
-            onChange={(e) => setDestination(e.target.value)}
-          ></input>
+          <input placeholder="Destination" ref={props.destinationRef}></input>
         </Autocomplete>
         <button
           onClick={props.calculateRoute}
@@ -65,8 +67,8 @@ export default function TripDataBox({ props }) {
       </form>
       <div className="tripDetails">
         <h1>Trip Details</h1>
-        {props.distance !== "" ? <p>Distance: {props.distance}</p> : <></>}
-        {props.duration !== "" ? <p>Duration: {props.duration}</p> : <></>}
+        {props.distance !== '' ? <p>Distance: {props.distance}</p> : <></>}
+        {props.duration !== '' ? <p>Duration: {props.duration}</p> : <></>}
         {props.waypoints.map((waypoint) => (
           <WaypointBox key={waypoint.placeId} props={waypoint} />
         ))}

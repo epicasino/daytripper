@@ -21,8 +21,8 @@ const typeDefs = `
   }
   input WaypointInput {
     formatted_address: String!
-    lat: String!
-    lng: String!
+    lat: Float!
+    lng: Float!
     name: String!
     placeId: String!
   }

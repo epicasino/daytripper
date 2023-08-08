@@ -11,7 +11,7 @@ const tripSchema = new Schema({
   },
   waypoints: [
     {
-      address: {
+      formatted_address: {
         type: String,
       },
       lat: {
