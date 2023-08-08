@@ -7,10 +7,10 @@ export default function Testimonials() {
       <div className="bg-gradient-to-r from-terracotta via-dirt to-sage h-full text-white font-kawaii">
         <div className="container mx-auto lg:px-20">
           <div className="grid grid-cols-3 h-full pb-40">
-            <div className="border-r-2 mt-3 border-sage mx-3 lg:pl-20">
+            <div className="border-r-8 border-t-8 mt-3 border-sage mx-3 lg:pl-20">
               <div className="py-10 pb-3 mt-72 relative bg-green hover:bg-sage cursor-pointer transition ease-out duration-300">
                 <div>
-                  <div className="w-4 h-fit absolute right-0 -top-48 bg-green group-hover:bg-sage"></div>
+                  <div className="w-4 h-fit absolute bg-green group-hover:bg-sage"></div>
                   <img
                     src="sofia.jpeg"
                     className="rounded-full"
@@ -28,10 +28,10 @@ export default function Testimonials() {
                 </div>
               </div>
             </div>
-            <div className="border-r-2 mt-5 border-coral mx-3 lg:pl-20">
-              <div className="py-10 pb-3 mt-32 relative bg-terracotta hover:bg-coral cursor-pointer transition ease-out duration-300">
+            <div className="border-r-8 border-t-8 mt-5 border-coral mx-3 lg:pl-20">
+              <div className="py-10 pb-3 relative bg-terracotta hover:bg-coral cursor-pointer transition ease-out duration-300">
                 <div>
-                  <div className="w-4 h-fit absolute right-0 -top-48 bg-terracotta group-hover:bg-coral"></div>
+                  <div className="w-4 h-fit absolute bg-terracotta group-hover:bg-coral"></div>
                   <img
                     src="jeff2.jpeg"
                     className="rounded-full"
@@ -50,22 +50,22 @@ export default function Testimonials() {
                 </div>
               </div>
             </div>
-            <div className="border-r-2 mt-6 border-sand mx-3 lg:pl-20">
-              <div className="py-10 pb-3 mt-5 h-fit relative bg-dirt hover:bg-sand cursor-pointer transition ease-out duration-300">
+            <div className="border-r-8 border-t-8 mt-6 border-sand mx-3 lg:pl-20">
+              <div className="py-10 pb-3 mb-6 relative bg-dirt hover:bg-sand cursor-pointer transition ease-out duration-300">
                 <div>
-                  <div className="w-4 h-fit bg-dirt absolute right-o -bottom-44 group-hover bg"></div>
+                  <div className="w-4 h-fit bg-dirt absolute group-hover bg"></div>
                   <img
                     src="quinton.jpeg"
                     className="rounded-full"
                     alt="man in suit smiling with arms crossed"/>
                 </div>
-                <div className="px-7 mt-5">
+                <div className="px-7 mt-5 ml-3 mr-2 ">
                   <h1 className="text-3xl front-bold hover:text-dirt transition ease-out duration-300">
                     Quinton F.
                   </h1>
                   <h2 className="text-2xl mt-4 font-bold">Vitamin D</h2>
                   <p className="mt-2 opacity-60 group-hover:opacity-70">
-                    Ever since Diablo4 came out, I forgot what the sun looked like. Now with DAY TRIPPER, I can touch grass again!!
+                    Ever since Diablo4 came out, I forgot what the sun looked like. Now with DAY TRIPPER, I can finally touch grass again!!
                   </p>
                 </div>
               </div>
