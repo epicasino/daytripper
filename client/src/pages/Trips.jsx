@@ -28,7 +28,7 @@ export default function Trips() {
   }
 
   return (
-    <div className='bg-gradient-to-r from-terracotta via-sand to-sage h-screen'>
+    <div className='bg-gradient-to-r from-terracotta via-sand to-sage bg-auto'>
       <Navbar />
       <header className="text-center font-kawaii text-white text-3xl p-1 bg-terracotta border-b-2 border-green ">My Saved Trips</header>
       <h1 className='font-kawaii text-white m-4'>Hello, {userData.username}!</h1>
