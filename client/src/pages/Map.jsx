@@ -8,14 +8,12 @@ import MapInfoWindow from '../components/maps/MapInfoWindow';
 import TripDataBox from '../components/trips/TripDataBox';
 import Navbar from '../components/navbar/Navbar';
 
-
 // Can remove later, used to center maps to coordinates when loaded
 const center = { lat: 32.97, lng: -117.11 };
 
 const googleMapLibraries = ['places'];
 
 export default function Map() {
-
   // Loads the Google Map API w/ hook, renders when its fully loaded
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
@@ -34,10 +32,10 @@ export default function Map() {
       width: '90vw',
       display: 'flex',
     },
-    maps: { 
-      width: '100%', 
-      height: '100%', 
-      zIndex: 0, 
+    maps: {
+      width: '100%',
+      height: '100%',
+      zIndex: 0,
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
@@ -86,7 +84,7 @@ export default function Map() {
       // eslint-disable-next-line no-undef
       const directionsService = new google.maps.DirectionsService();
 
-      console.log(waypoints);
+      // console.log(waypoints);
       const results = await directionsService.route({
         origin: originRef.current.value,
         destination: destinationRef.current.value,
@@ -95,7 +93,7 @@ export default function Map() {
         travelMode: google.maps.TravelMode.DRIVING,
       });
       setDirectionResponse(results);
-      console.log(results);
+      // console.log(results);
       setDistance(results.routes[0].legs[0].distance.text);
       setDuration(results.routes[0].legs[0].duration.text);
     }
@@ -104,7 +102,12 @@ export default function Map() {
 
   // Loading text if Google Maps API isn't loaded
   if (!isLoaded) {
-    return <div className="w-screen h-screen animate-pulse text-5xl flex items-center justify-center"> Loading Map... </div>;
+    return (
+      <div className="w-screen h-screen animate-pulse text-5xl flex items-center justify-center">
+        {' '}
+        Loading Map...{' '}
+      </div>
+    );
   }
 
   // Calculates routes when form is submitted
@@ -125,7 +128,7 @@ export default function Map() {
       travelMode: google.maps.TravelMode.DRIVING,
     });
     setDirectionResponse(results);
-    console.log(results);
+    // console.log(results);
     setDistance(results.routes[0].legs[0].distance.text);
     setDuration(results.routes[0].legs[0].duration.text);
   }
@@ -145,7 +148,7 @@ export default function Map() {
             lng: data.results[0].geometry.location.lng(),
           };
         });
-      console.log(location);
+      // console.log(location);
       setSelectedLocation(location);
 
       const detailSearch = await fetch(
@@ -154,7 +157,7 @@ export default function Map() {
         .then((data) => data.json())
         .then((json) => json.result);
 
-      console.log({ ...detailSearch, placeId: e.placeId });
+      // console.log({ ...detailSearch, placeId: e.placeId });
       setPlaceDetails({ ...detailSearch, placeId: e.placeId });
     }
   };
@@ -170,42 +173,53 @@ export default function Map() {
       {/* NavBar component added */}
       <Navbar />
       <section className="h-screen bg-gradient-to-r from-sand via-sage to-sand">
-        <header className="text-center font-kawaii text-white text-3xl bg-gradient-to-r from-terracotta via-coral to-terracotta">Plan Your Trip</header>
-            <div style={styles.mapsContainer}>
-              <div className="tripDataBox font-kawaii" style={styles.tripDataBox}>
-                <TripDataBox
-                  props={{
-                    distance,
-                    duration,
-                    originRef,
-                    destinationRef,
-                    waypoints,
-                    directionResponse,
-                    calculateRoute,
-                  }}
-                />
-              </div>
-              <GoogleMap
-                center={center}
-                zoom={15}
-                mapContainerStyle={styles.maps}
-                mapContainerClassName="mapContainer border-2 border-green rounded-lg m-1"
-                onClick={placeIdToCoords}
-              >
-                {selectedLocation ? (
-                  // When there is a selectedLocation, an InfoWindow component loads, passing down props for location & place details
-                  <MapInfoWindow
-                    props={{ selectedLocation, placeDetails, saveWaypoint }}
-                  />
-                ) : (
-                  <></>
-                )}
-                {/* Display markers, directions, etc. */}
-                {directionResponse && (
-                  <DirectionsRenderer directions={directionResponse} />
-                )}
-              </GoogleMap>
-            </div>
+        <header className="text-center font-kawaii text-white text-3xl bg-gradient-to-r from-terracotta via-coral to-terracotta">
+          Plan Your Trip
+        </header>
+        <div style={styles.mapsContainer}>
+          <div className="tripDataBox font-kawaii" style={styles.tripDataBox}>
+            <TripDataBox
+              props={{
+                distance,
+                duration,
+                originRef,
+                destinationRef,
+                waypoints,
+                directionResponse,
+                calculateRoute,
+              }}
+            />
+          </div>
+          <GoogleMap
+            center={center}
+            zoom={15}
+            mapContainerStyle={styles.maps}
+            mapContainerClassName="mapContainer border-2 border-green rounded-lg m-1"
+            onClick={placeIdToCoords}
+          >
+            {selectedLocation ? (
+              // When there is a selectedLocation, an InfoWindow component loads, passing down props for location & place details
+              <MapInfoWindow
+                props={{ selectedLocation, placeDetails, saveWaypoint }}
+              />
+            ) : (
+              <></>
+            )}
+            {/* Display markers, directions, etc. */}
+            {directionResponse && (
+              <DirectionsRenderer directions={directionResponse} />
+            )}
+          </GoogleMap>
+
+          {/* {selectedLocation ? (
+            // When there is a selectedLocation, an InfoWindow component loads, passing down props for location & place details
+            <MapInfoWindow
+              props={{ selectedLocation, placeDetails, saveWaypoint }}
+            />
+          ) : (
+            <></>
+          )} */}
+        </div>
       </section>
     </div>
   );
