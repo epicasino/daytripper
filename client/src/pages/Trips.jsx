@@ -30,7 +30,8 @@ export default function Trips() {
   return (
     <div>
       <Navbar />
-      <h1>Hello, {userData.username}!</h1>
+      <header className="text-center font-kawaii text-white text-3xl p-1 bg-terracotta">My Saved Trips</header>
+      <h1 className='font-kawaii'>Hello, {userData.username}!</h1>
       <div className="tripsContainer">
         {userData.trips?.map((trip) => {
           return (

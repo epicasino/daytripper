@@ -1,7 +1,7 @@
 export default function Testimonials() {
   return (
     <section>
-      <header className="text-center font-kawaii text-4xl bg-green text-white ">
+      <header className="text-center font-kawaii text-4xl p-1 bg-green text-white ">
         Testimonials
       </header>
       <div className="bg-gradient-to-r from-terracotta via-dirt to-sage h-full text-white font-kawaii">
