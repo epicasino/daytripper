@@ -6,6 +6,8 @@ import {
 import { useState, useRef, useEffect } from 'react';
 import MapInfoWindow from '../components/maps/MapInfoWindow';
 import TripDataBox from '../components/trips/TripDataBox';
+import Navbar from '../components/navbar/Navbar';
+
 
 // Can remove later, used to center maps to coordinates when loaded
 const center = { lat: 32.97, lng: -117.11 };
@@ -13,6 +15,7 @@ const center = { lat: 32.97, lng: -117.11 };
 const googleMapLibraries = ['places'];
 
 export default function Map() {
+
   // Loads the Google Map API w/ hook, renders when its fully loaded
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
@@ -154,40 +157,43 @@ export default function Map() {
   };
 
   return (
-    <div style={styles.mapsContainer}>
-      <div className="tripDataBox" style={styles.tripDataBox}>
-        <TripDataBox
-          props={{
-            distance,
-            duration,
-            originRef,
-            destinationRef,
-            waypoints,
-            directionResponse,
-            calculateRoute,
-          }}
-        />
-      </div>
-      <GoogleMap
-        center={center}
-        zoom={15}
-        mapContainerStyle={styles.maps}
-        mapContainerClassName="mapContainer"
-        onClick={placeIdToCoords}
-      >
-        {selectedLocation ? (
-          // When there is a selectedLocation, an InfoWindow component loads, passing down props for location & place details
-          <MapInfoWindow
-            props={{ selectedLocation, placeDetails, saveWaypoint }}
+    <div>
+      <Navbar />
+      <div style={styles.mapsContainer}>
+        <div className="tripDataBox" style={styles.tripDataBox}>
+          <TripDataBox
+            props={{
+              distance,
+              duration,
+              originRef,
+              destinationRef,
+              waypoints,
+              directionResponse,
+              calculateRoute,
+            }}
           />
-        ) : (
-          <></>
-        )}
-        {/* Display markers, directions, etc. */}
-        {directionResponse && (
-          <DirectionsRenderer directions={directionResponse} />
-        )}
-      </GoogleMap>
+        </div>
+        <GoogleMap
+          center={center}
+          zoom={15}
+          mapContainerStyle={styles.maps}
+          mapContainerClassName="mapContainer"
+          onClick={placeIdToCoords}
+        >
+          {selectedLocation ? (
+            // When there is a selectedLocation, an InfoWindow component loads, passing down props for location & place details
+            <MapInfoWindow
+              props={{ selectedLocation, placeDetails, saveWaypoint }}
+            />
+          ) : (
+            <></>
+          )}
+          {/* Display markers, directions, etc. */}
+          {directionResponse && (
+            <DirectionsRenderer directions={directionResponse} />
+          )}
+        </GoogleMap>
+      </div>
     </div>
   );
 }
