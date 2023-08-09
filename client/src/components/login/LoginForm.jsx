@@ -23,7 +23,7 @@ export default function LoginForm() {
     if (loginError) {
       setLoginError(false);
     }
-  }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -47,9 +47,10 @@ export default function LoginForm() {
   return (
     <section className="h-screen">
       <header className="text-center font-kawaii text-white text-3xl p-1 bg-gradient-to-r from-terracotta to-green">
-        Login Page</header>
-      <div className="bg-cover bg-no-repeat object-cover max-w max-h bg-[url('https://i.imgur.com/RYdZHkL.png')] flex flex-col items-center justify-center h-full">
-        <div className="border-box rounded-lg h-2/5 w-2/4 p-4 border-4 bg-green bg-opacity-70">
+        Login Page
+      </header>
+      <div className="bg-cover bg-no-repeat object-cover bg-[url('https://i.imgur.com/RYdZHkL.png')] flex flex-col items-center justify-center h-full">
+        <div className="border-box rounded-lg h-fit w-fit p-4 border-4 bg-green bg-opacity-70 flex items-center justify-center">
           {/* Ray: Box that appears if user has wrong user/pass */}
           {loginError && (
             <div className="errorBox">
@@ -61,7 +62,7 @@ export default function LoginForm() {
               </button>
             </div>
           )}
-          <div className=" font-kawaii text-center m-6 text-2xl object-contain">
+          <div className=" font-kawaii text-center m-6 text-2xl items-center">
             <form onSubmit={handleSubmit}>
               <label className="text-white text-2xl">
                 Username:
@@ -83,21 +84,23 @@ export default function LoginForm() {
                 />
               </label>
               <br />
-              <button
-                type="submit"
-                className="bg-coral text-white rounded-full py-2 px-4 border hover:border-transparent hover:text-terracotta mt-5 "
-              >
-                Login
-              </button>
+              <div className="flex justify-between items-end">
+                <button
+                  type="submit"
+                  className="bg-coral text-white rounded-full py-2 px-4 border hover:border-transparent hover:text-terracotta mt-5 "
+                >
+                  Login
+                </button>
+                <Link to="/register">
+                  <button
+                    type="submit"
+                    className="text-white rounded-full hover:underline hover:text-terracotta text-base"
+                  >
+                    Need to Register?
+                  </button>
+                </Link>
+              </div>
             </form>
-            <Link to="/register">
-              <button
-                type="submit"
-                className="bg-coral text-white rounded-full py-2 px-4 border hover:border-transparent hover:text-terracotta mt-5 "
-              >
-                Register
-              </button>
-            </Link>
           </div>
         </div>
       </div>

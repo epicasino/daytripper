@@ -74,8 +74,8 @@ export default function RegistrationForm() {
       <header className="text-center font-kawaii text-3xl bg-gradient-to-r text-white from-terracotta to-green">
         Register Now
       </header>
-      <div className="bg-cover bg-no-repeat object-cover max-w max-h bg-[url('https://i.imgur.com/MJR2Bcc.png')] flex flex-col items-center justify-center h-full">
-        <div className="border-box rounded-lg h-2/5 w-2/4 p-4 border-4 bg-green bg-opacity-70">
+      <div className="bg-cover bg-no-repeat object-cover bg-[url('https://i.imgur.com/MJR2Bcc.png')] flex flex-col items-center justify-center h-full">
+        <div className="border-box rounded-lg h-fit w-fit p-4 border-4 bg-green bg-opacity-70">
           {/* Ray: Box that appears if user has wrong user/pass for registering */}
           {regError && (
             <div className="errorBox">
