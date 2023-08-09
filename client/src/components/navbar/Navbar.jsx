@@ -29,9 +29,9 @@ export default function Navbar() {
                 <></>
               )}
               <li>
-                <a className="hover:text-sage" href="#">
-                  Contact
-                </a>
+              <Link to="/Contact" className="hover:text-sage">
+                    Contact
+                  </Link>
               </li>
             </ul>
           </div>
