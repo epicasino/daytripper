@@ -29,8 +29,8 @@ export default function Trips() {
   // commenting out height and width removed white on bottom
   const styles = {
     tripsContainer: {
-      // height: '100vh',
-      // width: '100vw'
+      minHeight: '100vh',
+      width: '100vw'
     },
   };
 
