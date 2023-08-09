@@ -40,14 +40,14 @@ export default function Trips() {
       style={styles.tripsContainer}
     >
       <Navbar />
-      <header className="text-center font-kawaii text-white text-3xl p-1 bg-terracotta border-b-2 border-green ">
+      <header className="text-center font-kawaii text-white text-2xl p-1 bg-terracotta border-b-2 border-green ">
         My Saved Trips
       </header>
       <subheader className="text-center">
-        <h1 className="font-kawaii text-white m-4">
+        <h1 className="font-kawaii text-white m-2">
           Hello, {userData.username}!
         </h1>
-        <p className="font-kawaii text-white m-4">
+        <p className="font-kawaii text-white m-2">
           A look at your saved trips:
         </p>
       </subheader>
