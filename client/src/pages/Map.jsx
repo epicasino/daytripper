@@ -25,12 +25,10 @@ export default function Map() {
   // Can Change
   const styles = {
     mapsContainer: {
-      position: 'absolute',
-      screenLeft: 0,
-      screenTop: 0,
       height: '90vh',
-      width: '90vw',
+      width: 'fit',
       display: 'flex',
+      margin: '1rem 1rem 0 1rem'
     },
     maps: {
       width: '100%',
@@ -41,14 +39,13 @@ export default function Map() {
       alignItems: 'center',
     },
     tripDataBox: {
-      width: '20%',
-      height: '75%',
+      width: '40%',
+      minHeight: '95%',
       backgroundColor: '#B0442A',
       margin: '1rem',
       padding: '1rem',
       zIndex: 1,
       borderRadius: '1rem',
-      marginTop: '5rem',
     },
   };
 
