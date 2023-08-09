@@ -19,7 +19,7 @@ export default function Trips() {
   // Checks to see if user is logged in , if not, returns with this
   if (!Auth.loggedIn()) {
     return (
-      <div className="bg-sage h- font-kawaii text-white text-center align-middle object-contain">
+      <div className="bg-gradient-to-r from-terracotta via-sand to-sage h-screen font-kawaii text-white text-center align-middle object-contain">
         <Navbar />
         <h1 className="m-2 p-xl">Well, this is awkward...</h1>
         <h1>You need to be logged in to see your saved trips!</h1>
