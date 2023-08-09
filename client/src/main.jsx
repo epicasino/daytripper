@@ -8,6 +8,7 @@ import Map from './pages/Map.jsx';
 import Login from './pages/Login.jsx';
 import Trips from './pages/Trips.jsx';
 import Register from './pages/Register.jsx';
+import Contact from './pages/Contact.jsx';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
         path: '/register',
         element: <Register />,
       },
+      {
+        path: '/contact',
+        element: <Contact />,
+      }
     ],
   },
 ]);
