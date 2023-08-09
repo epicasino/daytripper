@@ -150,11 +150,6 @@ export default function Map() {
 
       const detailSearch = await fetch(
         `https://daytripper-app-2d48e649b430.herokuapp.com/api/placeDetails/${e.placeId}`,
-        {
-          method: 'GET',
-          headers: { 'Content-Type ': 'application/json' },
-          mode: 'cors',
-        }
       )
         .then((data) => data.json())
         .then((json) => json.result);

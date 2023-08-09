@@ -14,7 +14,14 @@ const db = require('./config/connection');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      'http://localhost:3000',
+      'https://daytripper-app-1577e78f3877.herokuapp.com/',
+    ],
+  })
+);
 
 const server = new ApolloServer({
   typeDefs,
