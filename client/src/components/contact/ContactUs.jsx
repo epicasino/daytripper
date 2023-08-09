@@ -39,7 +39,7 @@ export default function ContactUs() {
                         <p className="mb-4 text-xl text-white">
                         <a href="https://github.com/joseperez013" className="text-white">GitHub</a>
                             <br />
-                            <a href="https://www.linkedin.com/" className="text-white">LinkedIn</a>
+                            <a href="https://www.linkedin.com/in/jose-perez-472444286/" className="text-white">LinkedIn</a>
                         </p>
                     </div>
                 </div>
