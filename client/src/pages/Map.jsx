@@ -28,7 +28,7 @@ export default function Map() {
       height: '90vh',
       width: 'fit',
       display: 'flex',
-      margin: '1rem 1rem 0 1rem'
+      margin: '1rem 1rem 0 1rem',
     },
     maps: {
       width: '100%',
@@ -149,7 +149,7 @@ export default function Map() {
       setSelectedLocation(location);
 
       const detailSearch = await fetch(
-        `http://localhost:3001/api/placeDetails/${e.placeId}`
+        `https://daytripper-app-2d48e649b430.herokuapp.com/api/placeDetails/${e.placeId}`
       )
         .then((data) => data.json())
         .then((json) => json.result);
