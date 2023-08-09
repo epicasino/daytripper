@@ -55,7 +55,7 @@ export default function LoginForm() {
           {loginError && (
             <div className="errorBox">
               <button
-                className="text-xl p-1 text-center w-full"
+                className="text-xl p-1 text-center w-full font-kawaii text-white"
                 onClick={closeError}
               >
                 Wrong Username or Password!
