@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ADD_USER } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 import Auth from '../../utils/auth';
+import { Link } from 'react-router-dom';
 
 export default function RegistrationForm() {
   const [userName, setUserName] = useState('');
@@ -25,7 +26,7 @@ export default function RegistrationForm() {
     if (regError) {
       setRegError(false);
     }
-  }
+  };
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -82,77 +83,76 @@ export default function RegistrationForm() {
                 className="text-xl px-1 text-center w-full"
                 onClick={closeError}
               >
-                Something went wrong with registering! Check your email and confirm your password.
+                Something went wrong with registering! Check your email and
+                confirm your password.
               </button>
             </div>
           )}
           <form
-            className="font-kawaii text-center m-6 text-2xl object-contain"
+            className="font-kawaii text-2xl flex flex-col px-5"
             onSubmit={handleSubmit}
           >
-            <label className="form__label text-white" htmlFor="userName">
+            <label className="text-white" htmlFor="userName">
               Username
             </label>
             <input
-              className="form__input ml-1"
+              className="px-3"
               type="text"
               value={userName}
               onChange={(e) => handleInputChange(e)}
               id="regUserName"
-              placeholder="userName"
+              placeholder="Username"
             />
 
-            <div className="email">
-              <label className="form__label text-white ml-2" htmlFor="email">
-                Email
-              </label>
-              <input
-                type="email"
-                id="regEmail"
-                className="form__input mt-2 ml-1"
-                value={email}
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Email"
-              />
-            </div>
+            <label className="text-white" htmlFor="email">
+              Email
+            </label>
+            <input
+              className="px-3"
+              type="email"
+              id="regEmail"
+              value={email}
+              onChange={(e) => handleInputChange(e)}
+              placeholder="Email"
+            />
 
-            <div className="password">
-              <label className="form__label text-white" htmlFor="password">
-                Password
-              </label>
-              <input
-                className="form__input m-2 ml-1"
-                type="password"
-                id="regPassword"
-                value={password}
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Password"
-              />
-            </div>
+            <label className="text-white" htmlFor="password">
+              Password
+            </label>
+            <input
+              className="px-3"
+              type="password"
+              id="regPassword"
+              value={password}
+              onChange={(e) => handleInputChange(e)}
+              placeholder="Password"
+            />
 
-            <div className="confirm-password">
-              <label
-                className="form__label text-white"
-                htmlFor="confirmPassword"
+            <label className="text-white" htmlFor="confirmPassword">
+              Confirm Password
+            </label>
+            <input
+              className="px-3"
+              type="password"
+              id="confirmPassword"
+              value={confirmPassword}
+              onChange={(e) => handleInputChange(e)}
+              placeholder="Confirm Password"
+            />
+            <div className='flex justify-between items-end'>
+              <button
+                onSubmit={handleSubmit}
+                type="submit"
+                className="bg-coral text-white rounded-full py-2 px-5 my-4 border hover:border-transparent hover:text-terracotta"
               >
-                Confirm Password
-              </label>
-              <input
-                className="form__input ml-1"
-                type="password"
-                id="confirmPassword"
-                value={confirmPassword}
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Confirm Password"
-              />
+                Register
+              </button>
+              <Link to="/login">
+                <button className="text-white rounded-full py-2 px-5 my-4 hover:underline hover:text-terracotta text-base">
+                  Need to Login?
+                </button>
+              </Link>
             </div>
-            <button
-              onSubmit={handleSubmit}
-              type="submit"
-              className="bg-coral text-white rounded-full py-2 px-4 border hover:border-transparent hover:text-terracotta mt-5"
-            >
-              Register
-            </button>
           </form>
         </div>
       </div>

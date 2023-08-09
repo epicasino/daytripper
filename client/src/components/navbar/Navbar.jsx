@@ -18,6 +18,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <div className="nav-links duration-500 md:static absolute bg-green text-white text-center font-kawaii md:min-h-fit min-h-[60vh] left-0 top-[-100%] px-5">
             <ul className="flex md:flex-row flex-col md:items-end md:gap-[4vw] py-1 my-2">
+              {/* If user isn't logged in, /trips in navbar does not render */}
               {Auth.loggedIn() ? (
                 <li>
                   <Link to="/trips" className="hover:text-sage">
