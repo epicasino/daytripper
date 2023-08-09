@@ -41,6 +41,10 @@ export default function TripDataBox({ props }) {
           waypoints: trip.waypoints,
         },
       });
+      e.target.innerHTML = 'Trip saved!';
+      setTimeout(() => {
+        e.target.innerHTML = 'Save Trip';
+      }, 3000);
       // console.log(data);
     } catch (err) {
       console.error(err);
@@ -53,7 +57,10 @@ export default function TripDataBox({ props }) {
     <>
       <div className="bg-terracotta">
         <h1 className="text-white">Your Trip</h1>
-        <form onSubmit={props.calculateRoute} className="tripForm grid grid-cols-2 gap-2">
+        <form
+          onSubmit={props.calculateRoute}
+          className="tripForm grid grid-cols-2 gap-2"
+        >
           <Autocomplete>
             <input
               className="p-2 col-span-1"
