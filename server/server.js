@@ -18,7 +18,7 @@ const server = new ApolloServer({
   resolvers,
 });
 
-app.use(cors());
+app.use(cors({ origin: 'https://daytripper-app-1577e78f3877.herokuapp.com/' }));
 app.use(routes);
 
 const startApolloServer = async () => {
