@@ -53,24 +53,38 @@ export default function TripDataBox({ props }) {
     <>
       <div className="bg-terracotta">
         <h1 className="text-white">Your Trip</h1>
-        <form onSubmit={props.calculateRoute} className="tripForm">
+        <form onSubmit={props.calculateRoute} className="tripForm grid grid-cols-2 gap-2">
           <Autocomplete>
-            <input placeholder="From" ref={props.originRef}></input>
+            <input
+              className="p-2 col-span-1"
+              placeholder="From"
+              ref={props.originRef}
+            ></input>
           </Autocomplete>
           <Autocomplete>
-            <input placeholder="Destination" ref={props.destinationRef}></input>
+            <input
+              className="p-2 col-span-1"
+              placeholder="Destination"
+              ref={props.destinationRef}
+            ></input>
           </Autocomplete>
           <button
             onClick={props.calculateRoute}
-            className="bg-green font-kawaii text-white px-4 py-1 m-1 rounded-full hover:bg-sage"
+            className="bg-green font-kawaii text-white py-1 rounded-full hover:bg-sage col-span-2"
           >
             Submit
           </button>
         </form>
         <div className="tripDetails">
           <h1 className="text-white">Trip Details</h1>
-          {props.distance !== '' ? <p>Distance: {props.distance}</p> : <></>}
-          {props.duration !== '' ? <p>Duration: {props.duration}</p> : <></>}
+          {props.duration && props.distance ? (
+            <div className="bg-white flex flex-col items-center justify-center my-5 rounded">
+              <p>Distance: {props.distance}</p>
+              <p>Duration: {props.duration}</p>
+            </div>
+          ) : (
+            <></>
+          )}
           {props.waypoints.map((waypoint) => (
             <WaypointBox key={waypoint.placeId} props={waypoint} />
           ))}
