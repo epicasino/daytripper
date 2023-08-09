@@ -33,7 +33,7 @@ export default function Trips() {
       <header className="text-center font-kawaii text-white text-3xl p-1 bg-terracotta border-b-2 border-green ">My Saved Trips</header>
       <h1 className='font-kawaii text-white m-4'>Hello, {userData.username}!</h1>
         <p className='font-kawaii text-white m-4'>A look at your saved trips:</p>
-      <div className="tripsContainer border-box rounded-lg h-fit w-fit p-4 border-4 bg-green font-kawaii text-white border-sage m-2 flex flex-col items-center justify-center ">
+      <div className="tripsContainer border-box rounded-lg h-fit w-fit p-4 border-4 bg-green font-kawaii text-white border-sage mx-2 flex flex-col items-center justify-center ">
         <h2>Trips</h2>
         {userData.trips?.map((trip) => {
           return (
