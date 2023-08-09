@@ -80,7 +80,7 @@ export default function RegistrationForm() {
           {regError && (
             <div className="errorBox">
               <button
-                className="text-xl px-1 text-center w-full"
+                className="text-xl px-1 text-center w-full font-kawaii text-white"
                 onClick={closeError}
               >
                 Something went wrong with registering! Check your email and
