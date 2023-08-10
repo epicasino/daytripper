@@ -1,4 +1,4 @@
-# daytripper
+# [daytripper](https://daytripper-app-1577e78f3877.herokuapp.com/)
 
 ![GitHub deployments](https://img.shields.io/github/deployments/epicasino/daytripper/daytripper-app)
 ![GitHub](https://img.shields.io/github/license/epicasino/daytripper)
@@ -19,12 +19,14 @@ With 'DayTripper', your journey begins the moment you log in. Seamlessly create,
 
 ## Table of Contents
 
-- [Local Installation](#local-installation)
+- [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
 - [License](#license)
 
-## Local-Installation
+## Installation
+
+[LIVE DEPLOYMENT IN HEROKU](https://daytripper-app-1577e78f3877.herokuapp.com/)
 
 If you want to locally deploy the web application:
 
