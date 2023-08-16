@@ -5,7 +5,7 @@ import {
 } from '@react-google-maps/api';
 import { useState, useRef, useEffect } from 'react';
 import MapInfoWindow from '../components/maps/MapInfoWindow';
-import TripDataBox from '../components/trips/TripDataBox';
+import TripDataBox from '../components/maps/TripDataBox';
 import Navbar from '../components/navbar/Navbar';
 
 // Can remove later, used to center maps to coordinates when loaded
