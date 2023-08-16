@@ -31,12 +31,13 @@ export default function Trips() {
   const styles = {
     tripsContainer: {
       minHeight: '100vh',
-      width: '100vw',
+      maxWidth: '100vw',
+      width: '100%',
     },
   };
 
   return (
-    <section
+    <main
       className="bg-gradient-to-r from-terracotta via-sand to-sage"
       style={styles.tripsContainer}
     >
@@ -51,7 +52,7 @@ export default function Trips() {
         <p className="font-kawaii text-white">A look at your saved trips:</p>
       </subheader>
       <TripsBox userData={userData} />
-    </section>
+    </main>
   );
 }
 
