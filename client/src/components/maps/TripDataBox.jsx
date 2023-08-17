@@ -3,7 +3,6 @@ import { Autocomplete } from '@react-google-maps/api';
 import { useMutation } from '@apollo/client';
 import WaypointBox from './WaypointBox';
 import { ADD_TRIP } from '../../utils/mutations';
-import { useEffect } from 'react';
 
 export default function TripDataBox({ props }) {
   const [addTrip, { error }] = useMutation(ADD_TRIP);

@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function WaypointBox({ props }) {
   return (
     <div className='bg-dirt rounded-md p-1 text-white mb-3'>
