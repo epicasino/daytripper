@@ -2,8 +2,8 @@ import ContactUs from '../components/contact/ContactUs';
 
 export default function Contact() {
   return (
-    <div>
+    <main>
       <ContactUs />
-    </div>
+    </main>
   );
 }

@@ -99,10 +99,10 @@ export default function Map() {
   // Loading text if Google Maps API isn't loaded
   if (!isLoaded) {
     return (
-      <div className="w-screen h-screen animate-pulse text-5xl flex items-center justify-center">
+      <main className="w-screen h-screen animate-pulse text-5xl flex items-center justify-center">
         {' '}
         Loading Map...{' '}
-      </div>
+      </main>
     );
   }
 
@@ -165,13 +165,13 @@ export default function Map() {
   };
 
   return (
-    <div>
+    <main>
       <section className="h-screen bg-gradient-to-r from-sand via-sage to-sand">
         <header className="text-center font-kawaii text-white text-3xl bg-gradient-to-r from-terracotta via-coral to-terracotta">
           Plan Your Trip
         </header>
         <div style={styles.mapsContainer}>
-          <div className="tripDataBox font-kawaii" style={styles.tripDataBox}>
+          <aside className="tripDataBox font-kawaii" style={styles.tripDataBox}>
             <TripDataBox
               props={{
                 distance,
@@ -183,7 +183,7 @@ export default function Map() {
                 calculateRoute,
               }}
             />
-          </div>
+          </aside>
           <GoogleMap
             center={center}
             zoom={15}
@@ -204,17 +204,8 @@ export default function Map() {
               <DirectionsRenderer directions={directionResponse} />
             )}
           </GoogleMap>
-
-          {/* {selectedLocation ? (
-            // When there is a selectedLocation, an InfoWindow component loads, passing down props for location & place details
-            <MapInfoWindow
-              props={{ selectedLocation, placeDetails, saveWaypoint }}
-            />
-          ) : (
-            <></>
-          )} */}
         </div>
       </section>
-    </div>
+    </main>
   );
 }

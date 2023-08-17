@@ -4,11 +4,21 @@ export default function ContactCard({ props }) {
       <div className="p-6 text-center">
         <h5 className="mb-2 text-4xl leading-tight text-white">{props.name}</h5>
         <p className="mb-4 text-xl text-white">
-          <a href={props.gitHub} className="text-white">
+          <a
+            href={props.gitHub}
+            rel="noreferrer"
+            target="_blank"
+            className="text-white"
+          >
             GitHub
           </a>
           <br />
-          <a href={props.linkedIn} className="text-white">
+          <a
+            href={props.linkedIn}
+            rel="noreferrer"
+            target="_blank"
+            className="text-white"
+          >
             LinkedIn
           </a>
         </p>
