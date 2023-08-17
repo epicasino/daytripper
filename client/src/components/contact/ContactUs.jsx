@@ -1,51 +1,39 @@
+import ContactCard from './ContactCard';
+
 export default function ContactUs() {
+  const contactInfo = [
+    {
+      name: 'ALISON COLAO',
+      gitHub: 'https://github.com/acolao',
+      linkedIn: 'https://linkedin.com/in/alisoncolao',
+    },
+    {
+      name: 'CHELSEA PRATTE',
+      gitHub: 'https://github.com/callmechelsea',
+      linkedIn: 'https://linkedin.com/in/callmechelsea',
+    },
+    {
+      name: 'JOSE PEREZ',
+      gitHub: 'https://github.com/joseperez013',
+      linkedIn: 'https://www.linkedin.com/in/jose-perez-472444286/',
+    },
+    {
+      name: 'RAY BADUA',
+      gitHub: 'https://github.com/epicasino',
+      linkedIn: 'https://www.linkedin.com/in/ray-badua/',
+    },
+  ];
+
   return (
-    <div className="bg-gradient-to-r from-terracotta via-sage to-dirt h-screen font-kawaii text-white">
+    <main className="bg-gradient-to-r from-terracotta via-sage to-dirt h-screen font-kawaii text-white">
       <header className="text-center text-4xl p-1">
         Like what you see? Feel free to contact us.
       </header>
-      <div className="grid justify-items- grid-cols-2 grid-rows-2">
-        <div className="m-6 rounded-full border-sand border-8 bg-green bg-opacity-90">
-          <div className="p-6 text-center">
-            <h5 className="mb-2 text-4xl leading-tight text-white">ALISON COLAO</h5>
-            <p className="mb-4 text-xl text-white">
-              <a href="https://github.com/acolao" className="text-white">GitHub</a>
-              <br />
-              <a href="https://linkedin.com/in/alisoncolao" className="text-white">LinkedIn</a>
-            </p>
-          </div>
-        </div>
-        <div className="m-6 rounded-full border-sand border-8 bg-green bg-opacity-90 ">
-          <div className="p-6 text-center">
-            <h5 className="mb-2 text-4xl leading-tight text-white">CHELSEA PRATTE</h5>
-            <p className="mb-4 text-xl text-white">
-              <a href="https://github.com/callmechelsea" className="text-white">GitHub</a>
-              <br />
-              <a href="https://linkedin.com/in/callmechelsea" className="text-white">LinkedIn</a>
-            </p>
-          </div>
-        </div>
-        <div className="m-6 rounded-full border-sand border-8 bg-green bg-opacity-90 ">
-          <div className="p-6 text-center">
-          <h5 className="mb-2 text-4xl leading-tight text-white">JOSE PEREZ</h5>
-            <p className="mb-4 text-xl text-white">
-              <a href="https://github.com/joseperez013" className="text-white">GitHub</a>
-              <br />
-              <a href="https://www.linkedin.com/in/jose-perez-472444286/" className="text-white">LinkedIn</a>
-            </p>
-          </div>
-        </div>
-        <div className="m-6 rounded-full border-sand border-8 bg-green bg-opacity-90 ">
-          <div className="p-6 text-center">
-          <h5 className="mb-2 text-4xl leading-tight text-white">RAY BADUA</h5>
-            <p className="mb-4 text-xl text-white">
-              <a href="https://github.com/epicasino" className="text-white">GitHub</a>
-              <br />
-              <a href="https://www.linkedin.com/in/ray-badua/" className="text-white">LinkedIn</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+      <section className="grid justify-items- grid-cols-2 grid-rows-2">
+        {contactInfo.map((contact) => (
+          <ContactCard key={contact.name} props={contact} />
+        ))}
+      </section>
+    </main>
   );
 }

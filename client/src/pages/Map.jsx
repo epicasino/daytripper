@@ -6,7 +6,6 @@ import {
 import { useState, useRef, useEffect } from 'react';
 import MapInfoWindow from '../components/maps/MapInfoWindow';
 import TripDataBox from '../components/maps/TripDataBox';
-import Navbar from '../components/navbar/Navbar';
 
 // Can remove later, used to center maps to coordinates when loaded
 const center = { lat: 32.97, lng: -117.11 };

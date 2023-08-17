@@ -1,5 +1,4 @@
 import TripsBox from '../components/trips/TripsBox';
-import Navbar from '../components/navbar/Navbar';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 // import { REMOVE_TRIP } from '../utils/mutations';
@@ -21,7 +20,6 @@ export default function Trips() {
   if (!Auth.loggedIn()) {
     return (
       <div className="bg-gradient-to-r from-terracotta via-sand to-sage h-screen font-kawaii text-white text-center align-middle object-contain">
-        <Navbar />
         <h1 className="m-2 p-xl">Well, this is awkward...</h1>
         <h1>You need to be logged in to see your saved trips!</h1>
       </div>
