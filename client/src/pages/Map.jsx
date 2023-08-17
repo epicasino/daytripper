@@ -167,8 +167,6 @@ export default function Map() {
 
   return (
     <div>
-      {/* NavBar component added */}
-      <Navbar />
       <section className="h-screen bg-gradient-to-r from-sand via-sage to-sand">
         <header className="text-center font-kawaii text-white text-3xl bg-gradient-to-r from-terracotta via-coral to-terracotta">
           Plan Your Trip

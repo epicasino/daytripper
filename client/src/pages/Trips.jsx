@@ -41,7 +41,6 @@ export default function Trips() {
       className="bg-gradient-to-r from-terracotta via-sand to-sage"
       style={styles.tripsContainer}
     >
-      <Navbar />
       <header className="text-center font-kawaii text-white text-2xl p-1 bg-terracotta border-b-2 border-green">
         My Saved Trips
       </header>
