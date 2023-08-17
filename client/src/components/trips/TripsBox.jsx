@@ -1,7 +1,7 @@
 export default function TripsBox({ userData }) {
   return (
-    <section className="flex flex-row justify-center">
-      <div
+    <div className="flex flex-row justify-center">
+      <section
         className="tripsContainer border-box rounded-lg w-3/4 p-4 border-4
        bg-green font-kawaii text-white border-sage m-6 flex flex-col items-center"
       >
@@ -21,7 +21,7 @@ export default function TripsBox({ userData }) {
             </article>
           );
         })}
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }

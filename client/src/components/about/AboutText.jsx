@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function AboutText() {
   return (
-    <div className="flex flex-col w-full lg:w-1/3 justify-center items-start p-8">
+    <aside className="flex flex-col w-full lg:w-1/3 justify-center items-start p-8">
       <h1 className="text-3xl md:text-5xl tracking-loose">LIFE IS SHORT</h1>
       <h2 className="text-2xl md:text-3xl py-2 leading-relaxed md:leading-snug mb-2">
         Have you ever thought about planning a road trip, but didn&#39;t know
@@ -32,6 +32,6 @@ export default function AboutText() {
         </button>
       </Link>
       {/* ----------------------------------------------------- */}
-    </div>
+    </aside>
   );
 }

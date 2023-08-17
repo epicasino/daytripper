@@ -52,28 +52,3 @@ export default function Trips() {
     </main>
   );
 }
-
-// {
-//   __typename: 'User',
-//   _id: '64d12ed6d7f1dd83872ccff6',
-//   username: 'bob2',
-//   email: 'bob@gmail.com',
-//   trips: [
-//     {
-//       __typename: 'Trip',
-//       _id: '64d1a2508616b29650c2532c',
-//       destinationLocation: 'San Marcos, CA',
-//       startLocation: 'San Diego, CA',
-//       waypoints: [
-//         {
-//           __typename: 'Waypoint',
-//           formatted_address: '14823 Pomerado Rd, Poway, CA 92064, USA',
-//           lat: '32.9805582',
-//           lng: '-117.0602928',
-//           name: 'Target',
-//           placeId: 'ChIJtUElhQ7624AR0hwMtfwVkdA'
-//         }
-//       ]
-//     }
-//   ]
-// }
