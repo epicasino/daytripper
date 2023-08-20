@@ -44,7 +44,7 @@ export default function Trips() {
         My Saved Trips
       </header>
       <subheader className="text-center">
-        <h1 className="font-kawaii text-white mt-5">
+        <h1 className="font-kawaii text-white mt-5 text-4xl">
           Hello, {userData.username}!
         </h1>
         <p className="font-kawaii text-white">A look at your saved trips:</p>

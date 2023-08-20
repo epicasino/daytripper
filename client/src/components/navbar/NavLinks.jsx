@@ -8,11 +8,18 @@ export function NavLinks() {
         <ul className="flex md:flex-row flex-col md:items-end md:gap-[4vw] py-1 my-2">
           {/* If user isn't logged in, /trips in navbar does not render */}
           {Auth.loggedIn() ? (
-            <li>
-              <Link to="/trips" className="hover:text-sage">
-                Trips
-              </Link>
-            </li>
+            <>
+              <li>
+                <Link to="/map" className="hover:text-sage">
+                  Map
+                </Link>
+              </li>
+              <li>
+                <Link to="/trips" className="hover:text-sage">
+                  Trips
+                </Link>
+              </li>
+            </>
           ) : (
             <></>
           )}

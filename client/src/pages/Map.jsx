@@ -90,8 +90,26 @@ export default function Map() {
       });
       setDirectionResponse(results);
       // console.log(results);
-      setDistance(results.routes[0].legs[0].distance.text);
-      setDuration(results.routes[0].legs[0].duration.text);
+
+      let directionDistance = 0;
+      let directionDuration = 0;
+      const directionLegs = results.routes[0].legs;
+
+      for (let i = 0; i < directionLegs.length; i++) {
+        directionDistance += directionLegs[i].distance.value;
+        directionDuration += directionLegs[i].duration.value;
+      }
+
+      let convertedDistance = `${Math.floor(directionDistance / 1609.344)} mi`;
+      // If this is the wrong way of doing it, oops.
+      let convertedDuration = `${Math.floor(
+        directionDuration / 3600
+      )} hour(s) ${Math.floor((directionDuration / 60) % 60)} mins`;
+      // console.log(convertedDuration);
+      // console.log(convertedDistance);
+
+      setDistance(convertedDistance);
+      setDuration(convertedDuration);
     }
     updateRoute();
   }, [waypoints]);
@@ -116,7 +134,7 @@ export default function Map() {
     // eslint-disable-next-line no-undef
     const directionsService = new google.maps.DirectionsService();
 
-    console.log(waypoints);
+    // console.log(waypoints);
     const results = await directionsService.route({
       origin: originRef.current.value,
       destination: destinationRef.current.value,
