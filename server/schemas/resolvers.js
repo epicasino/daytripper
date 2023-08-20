@@ -81,7 +81,7 @@ const resolvers = {
       if (context.user) {
         const removedTrip = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { trip: { tripId } } },
+          { $pull: { trips: { _id: tripId } } },
           { new: true }
         );
 

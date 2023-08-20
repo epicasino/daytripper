@@ -1,12 +1,10 @@
 import TripsBox from '../components/trips/TripsBox';
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
-// import { REMOVE_TRIP } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 export default function Trips() {
   const { loading, data } = useQuery(QUERY_ME, { fetchPolicy: 'network-only' });
-  // const [removeTrip, { error }] = useMutation(REMOVE_TRIP);
 
   const userData = data?.me || {};
 
