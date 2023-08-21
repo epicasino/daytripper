@@ -50,12 +50,12 @@ export default function LoginForm() {
         Login Page
       </header>
       <div className="bg-cover bg-no-repeat object-cover bg-[url('https://i.imgur.com/RYdZHkL.png')] flex flex-col items-center justify-center h-full">
-        <div className="border-box rounded-lg h-fit w-fit p-4 border-4 bg-green bg-opacity-70 flex items-center justify-center">
+        <div className="border-box rounded-lg h-fit w-fit p-4 border-4 bg-green bg-opacity-70 flex flex-col items-center justify-center">
           {/* Ray: Box that appears if user has wrong user/pass */}
           {loginError && (
             <div className="errorBox">
               <button
-                className="text-xl p-1 text-center w-full font-kawaii text-white"
+                className="text-xl py-2 text-center w-full font-kawaii text-white"
                 onClick={closeError}
               >
                 Wrong Username or Password!

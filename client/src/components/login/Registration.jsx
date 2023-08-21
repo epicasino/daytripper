@@ -75,7 +75,7 @@ export default function RegistrationForm() {
         Register Now
       </header>
       <div className="bg-cover bg-no-repeat object-cover bg-[url('https://i.imgur.com/MJR2Bcc.png')] flex flex-col items-center justify-center h-full">
-        <div className="border-box rounded-lg h-fit w-fit p-4 border-4 bg-green bg-opacity-70">
+        <div className="border-box rounded-lg h-fit w-fit border-4 bg-green bg-opacity-70 lg:w-5/12 lg:p-4">
           {/* Ray: Box that appears if user has wrong user/pass for registering */}
           {regError && (
             <div className="errorBox">
@@ -139,7 +139,7 @@ export default function RegistrationForm() {
               onChange={(e) => handleInputChange(e)}
               placeholder="Confirm Password"
             />
-            <div className='flex justify-between items-end'>
+            <div className="flex justify-between items-end">
               <button
                 onSubmit={handleSubmit}
                 type="submit"
